@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IELTS Task 1 — Complete Guide</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
   :root {
@@ -348,7 +348,7 @@
     font-family: 'DM Sans', sans-serif;
     font-size: 12.5px;
     line-height: 1.6;
-    padding: 9px 14px;
+    padding: 10px 14px;
     border-radius: 8px;
     max-width: 300px;
     z-index: 9999;
@@ -370,6 +370,22 @@
     color: #fff;
     border-radius: 2px;
     padding: 0 2px;
+  }
+  #chip-tooltip .tip-divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    margin: 8px 0;
+  }
+  #chip-tooltip .tip-bn {
+    font-size: 14px;
+    color: #fff;
+    font-family: 'Noto Sans Bengali', 'SolaimanLipi', sans-serif;
+  }
+  #chip-tooltip .tip-bn.loading {
+    color: rgba(255,255,255,0.4);
+    font-size: 12px;
+    font-style: italic;
+    font-family: 'DM Sans', sans-serif;
   }
   .chip[data-ex] { cursor: help; }
 
@@ -2323,33 +2339,72 @@ function showSubTab(section, tab) {
   const tip = document.createElement('div');
   tip.id = 'chip-tooltip';
   document.body.appendChild(tip);
-  let hideTimer;
-  function show(chip, e){
-    clearTimeout(hideTimer);
-    const ex = chip.dataset.ex;
+
+  const cache = {};
+  let hideTimer, currentChip = null;
+
+  function translate(word, cb){
+    if(cache[word] !== undefined){ cb(cache[word]); return; }
+    const url = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=bn&dt=t&q=' + encodeURIComponent(word);
+    fetch(url)
+      .then(r => r.json())
+      .then(data => {
+        const bn = (data[0] || []).map(x => x[0]).join('');
+        cache[word] = bn;
+        cb(bn);
+      })
+      .catch(() => { cache[word] = ''; cb(''); });
+  }
+
+  function render(chip, bn){
+    const ex   = chip.dataset.ex || '';
     const word = chip.textContent.trim();
-    const highlighted = ex.replace(new RegExp('(' + word.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'i'), '<mark>$1</mark>');
-    tip.innerHTML = '<span class="tip-label">Example</span>' + highlighted;
+    const safe = word.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    const highlighted = ex.replace(new RegExp('('+safe+')', 'i'), '<mark>$1</mark>');
+    tip.innerHTML =
+      '<span class="tip-label">Example</span>' + highlighted +
+      '<hr class="tip-divider">' +
+      '<span class="tip-label">বাংলা অর্থ</span>' +
+      '<span class="tip-bn' + (bn === null ? ' loading' : '') + '">' +
+        (bn === null ? 'অনুবাদ হচ্ছে…' : (bn || '—')) +
+      '</span>';
+  }
+
+  function show(chip){
+    clearTimeout(hideTimer);
+    currentChip = chip;
+    render(chip, null);           // show immediately with loading state
     tip.style.opacity = '1';
     reposition(chip);
+
+    const word = chip.textContent.trim();
+    translate(word, bn => {
+      if(currentChip === chip){   // still hovering same chip
+        render(chip, bn);
+        reposition(chip);
+      }
+    });
   }
+
   function reposition(chip){
     const r = chip.getBoundingClientRect();
-    let top = r.top - tip.offsetHeight - 10;
+    let top  = r.top - tip.offsetHeight - 10;
     let left = r.left + r.width/2 - tip.offsetWidth/2;
-    if(top < 8) top = r.bottom + 8;
+    if(top  < 8) top  = r.bottom + 8;
     if(left < 8) left = 8;
-    if(left + tip.offsetWidth > window.innerWidth - 8) left = window.innerWidth - tip.offsetWidth - 8;
+    if(left + tip.offsetWidth > window.innerWidth - 8)
+      left = window.innerWidth - tip.offsetWidth - 8;
     tip.style.top  = top  + 'px';
     tip.style.left = left + 'px';
   }
-  function hide(){ hideTimer = setTimeout(()=>{ tip.style.opacity='0'; }, 100); }
-  document.addEventListener('mouseover', e=>{
+
+  function hide(){ hideTimer = setTimeout(()=>{ tip.style.opacity='0'; currentChip=null; }, 120); }
+
+  document.addEventListener('mouseover', e => {
     const chip = e.target.closest('.chip[data-ex]');
-    if(chip) show(chip, e);
-    else hide();
+    if(chip) show(chip); else hide();
   });
-  document.addEventListener('scroll', ()=>{ tip.style.opacity='0'; }, true);
+  document.addEventListener('scroll', () => { tip.style.opacity='0'; currentChip=null; }, true);
 })();
 </script>
 </body>
