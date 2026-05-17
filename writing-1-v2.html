@@ -365,11 +365,10 @@
     color: rgba(255,255,255,0.45);
     margin-bottom: 3px;
   }
-  #chip-tooltip mark {
-    background: rgba(196,98,45,0.6);
+  #chip-tooltip .tip-meaning {
+    font-size: 13px;
     color: #fff;
-    border-radius: 2px;
-    padding: 0 2px;
+    font-style: italic;
   }
   #chip-tooltip .tip-divider {
     border: none;
@@ -377,7 +376,7 @@
     margin: 8px 0;
   }
   #chip-tooltip .tip-bn {
-    font-size: 14px;
+    font-size: 13.5px;
     color: #fff;
     font-family: 'Noto Sans Bengali', 'SolaimanLipi', sans-serif;
   }
@@ -386,6 +385,12 @@
     font-size: 12px;
     font-style: italic;
     font-family: 'DM Sans', sans-serif;
+  }
+  #chip-tooltip mark {
+    background: rgba(196,98,45,0.6);
+    color: #fff;
+    border-radius: 2px;
+    padding: 0 2px;
   }
   .chip[data-ex] { cursor: help; }
 
@@ -906,32 +911,32 @@
         <div class="card">
           <div class="card-title">Trend verbs <span class="card-title-badge" style="background:rgba(196,98,45,0.1);color:var(--accent);">upward</span></div>
           <div class="vocab-grid">
-            <span class="chip accent" data-ex="Sales rose from 200 to 450 units between 2010 and 2020.">rose</span><span class="chip accent" data-ex="The number of visitors increased steadily over the decade.">increased</span><span class="chip accent" data-ex="Temperatures climbed sharply during the summer months.">climbed</span>
-            <span class="chip accent" data-ex="Revenue grew by 40% in the final quarter of the year.">grew</span><span class="chip accent" data-ex="Demand surged after the product launch in 2018.">surged</span><span class="chip accent" data-ex="Profits soared to record highs by 2022.">soared</span>
-            <span class="chip accent" data-ex="The figure jumped from 15% to 35% in just two years.">jumped</span><span class="chip accent" data-ex="The unemployment rate went up slightly in 2009.">went up</span>
+            <span class="chip accent" data-meaning="moved to a higher level" data-ex="Sales rose from 200 to 450 units between 2010 and 2020.">rose</span><span class="chip accent" data-meaning="became greater in amount or number" data-ex="The number of visitors increased steadily over the decade.">increased</span><span class="chip accent" data-meaning="moved gradually to a higher level" data-ex="Temperatures climbed sharply during the summer months.">climbed</span>
+            <span class="chip accent" data-meaning="became larger over time" data-ex="Revenue grew by 40% in the final quarter of the year.">grew</span><span class="chip accent" data-meaning="increased suddenly and steeply" data-ex="Demand surged after the product launch in 2018.">surged</span><span class="chip accent" data-meaning="rose very quickly to a high level" data-ex="Profits soared to record highs by 2022.">soared</span>
+            <span class="chip accent" data-meaning="increased suddenly by a large amount" data-ex="The figure jumped from 15% to 35% in just two years.">jumped</span><span class="chip accent" data-meaning="moved to a higher level (informal)" data-ex="The unemployment rate went up slightly in 2009.">went up</span>
           </div>
           <div class="card-title" style="margin-top:18px;">Trend verbs <span class="card-title-badge" style="background:rgba(45,107,140,0.1);color:var(--accent2);">downward</span></div>
           <div class="vocab-grid">
-            <span class="chip blue" data-ex="Visitor numbers fell sharply during the economic downturn.">fell</span><span class="chip blue" data-ex="Car ownership declined gradually over the 20-year period.">declined</span><span class="chip blue" data-ex="The temperature dropped to its lowest point in January.">dropped</span>
-            <span class="chip blue" data-ex="Spending on healthcare decreased by 3% between 2015 and 2020.">decreased</span><span class="chip blue" data-ex="Production dipped briefly in 2016 before recovering the following year.">dipped</span><span class="chip blue" data-ex="Share prices plummeted following the global financial crisis.">plummeted</span>
-            <span class="chip blue" data-ex="Exports plunged to their lowest level in a decade by 2009.">plunged</span><span class="chip blue" data-ex="The figure went down from 60% to 45% over five years.">went down</span>
+            <span class="chip blue" data-meaning="moved to a lower level" data-ex="Visitor numbers fell sharply during the economic downturn.">fell</span><span class="chip blue" data-meaning="decreased gradually over time" data-ex="Car ownership declined gradually over the 20-year period.">declined</span><span class="chip blue" data-meaning="fell to a lower level, often quickly" data-ex="The temperature dropped to its lowest point in January.">dropped</span>
+            <span class="chip blue" data-meaning="became smaller in amount" data-ex="Spending on healthcare decreased by 3% between 2015 and 2020.">decreased</span><span class="chip blue" data-meaning="fell slightly, often briefly" data-ex="Production dipped briefly in 2016 before recovering the following year.">dipped</span><span class="chip blue" data-meaning="fell very suddenly and steeply" data-ex="Share prices plummeted following the global financial crisis.">plummeted</span>
+            <span class="chip blue" data-meaning="dropped sharply and dramatically" data-ex="Exports plunged to their lowest level in a decade by 2009.">plunged</span><span class="chip blue" data-meaning="moved to a lower level (informal)" data-ex="The figure went down from 60% to 45% over five years.">went down</span>
           </div>
           <div class="card-title" style="margin-top:18px;">Stable / fluctuating</div>
           <div class="vocab-grid">
-            <span class="chip" data-ex="The unemployment rate remained stable at around 5% throughout the period.">remained stable</span><span class="chip" data-ex="After rising sharply, growth levelled off in 2015 and stayed flat.">levelled off</span><span class="chip" data-ex="Car production plateaued at approximately 2 million units from 2017 onwards.">plateaued</span>
-            <span class="chip" data-ex="Temperatures fluctuated considerably between the summer and winter months.">fluctuated</span><span class="chip" data-ex="The proportion of female graduates stayed roughly constant at around 55%.">stayed roughly constant</span><span class="chip" data-ex="The birth rate showed little change over the two-decade period.">showed little change</span>
+            <span class="chip" data-meaning="stayed at the same level without changing" data-ex="The unemployment rate remained stable at around 5% throughout the period.">remained stable</span><span class="chip" data-meaning="stopped rising or falling and became flat" data-ex="After rising sharply, growth levelled off in 2015 and stayed flat.">levelled off</span><span class="chip" data-meaning="reached a flat period after a rise" data-ex="Car production plateaued at approximately 2 million units from 2017 onwards.">plateaued</span>
+            <span class="chip" data-meaning="moved up and down irregularly" data-ex="Temperatures fluctuated considerably between the summer and winter months.">fluctuated</span><span class="chip" data-meaning="did not change significantly" data-ex="The proportion of female graduates stayed roughly constant at around 55%.">stayed roughly constant</span><span class="chip" data-meaning="remained nearly the same throughout" data-ex="The birth rate showed little change over the two-decade period.">showed little change</span>
           </div>
           <div class="card-title" style="margin-top:18px;">Degree adverbs</div>
           <div class="vocab-grid">
-            <span class="chip accent" data-ex="Sales rose dramatically from 500 to 2,000 units in just one year.">dramatically</span><span class="chip accent" data-ex="The unemployment rate fell sharply after the new policy was introduced.">sharply</span><span class="chip accent" data-ex="Prices climbed steeply during the first half of the decade.">steeply</span>
-            <span class="chip green" data-ex="The population grew gradually over the 30-year period shown.">gradually</span><span class="chip green" data-ex="Income levels increased steadily throughout the 1990s.">steadily</span><span class="chip green" data-ex="Energy consumption rose moderately between 2000 and 2010.">moderately</span>
-            <span class="chip gold" data-ex="The figure dipped slightly in 2013 before recovering to its previous level.">slightly</span><span class="chip gold" data-ex="Costs increased marginally, from $2.1 million to $2.3 million.">marginally</span><span class="chip gold" data-ex="Temperatures rose gently throughout the spring months before peaking in July.">gently</span>
+            <span class="chip accent" data-meaning="by a very large and striking amount" data-ex="Sales rose dramatically from 500 to 2,000 units in just one year.">dramatically</span><span class="chip accent" data-meaning="quickly and steeply" data-ex="The unemployment rate fell sharply after the new policy was introduced.">sharply</span><span class="chip accent" data-meaning="at a fast rate, like a steep slope" data-ex="Prices climbed steeply during the first half of the decade.">steeply</span>
+            <span class="chip green" data-meaning="slowly and steadily over time" data-ex="The population grew gradually over the 30-year period shown.">gradually</span><span class="chip green" data-meaning="at an even, consistent pace" data-ex="Income levels increased steadily throughout the 1990s.">steadily</span><span class="chip green" data-meaning="by a medium amount, not extreme" data-ex="Energy consumption rose moderately between 2000 and 2010.">moderately</span>
+            <span class="chip gold" data-meaning="by a very small amount" data-ex="The figure dipped slightly in 2013 before recovering to its previous level.">slightly</span><span class="chip gold" data-meaning="by an extremely small, barely noticeable amount" data-ex="Costs increased marginally, from $2.1 million to $2.3 million.">marginally</span><span class="chip gold" data-meaning="slowly and smoothly, with no sudden change" data-ex="Temperatures rose gently throughout the spring months before peaking in July.">gently</span>
           </div>
           <div class="card-title" style="margin-top:18px;">Special points</div>
           <div class="vocab-grid">
-            <span class="chip" data-ex="Visitor numbers peaked at 4.6 million in 2018 before declining.">peaked at</span><span class="chip" data-ex="Production reached a high of 3.2 million units in 2015.">reached a high of</span><span class="chip" data-ex="Revenue hit a peak of $5 billion before the recession took hold.">hit a peak of</span>
-            <span class="chip" data-ex="Sales bottomed out at just 800 units in 2009 before recovering.">bottomed out at</span><span class="chip" data-ex="Temperatures hit a low of −12°C in January 2010.">hit a low of</span><span class="chip" data-ex="Numbers dropped sharply in 2008 before recovering to pre-crisis levels by 2011.">before recovering</span>
-            <span class="chip" data-ex="Figures rose to a peak of 90% in 2019, after which it fell steadily.">after which it</span><span class="chip" data-ex="Growth continued rapidly through 2012 before levelling off at around 3%.">before levelling off</span>
+            <span class="chip" data-meaning="reached its highest point of" data-ex="Visitor numbers peaked at 4.6 million in 2018 before declining.">peaked at</span><span class="chip" data-meaning="climbed to its maximum value of" data-ex="Production reached a high of 3.2 million units in 2015.">reached a high of</span><span class="chip" data-meaning="reached the top point of" data-ex="Revenue hit a peak of $5 billion before the recession took hold.">hit a peak of</span>
+            <span class="chip" data-meaning="reached its lowest point of" data-ex="Sales bottomed out at just 800 units in 2009 before recovering.">bottomed out at</span><span class="chip" data-meaning="dropped to its minimum value of" data-ex="Temperatures hit a low of −12°C in January 2010.">hit a low of</span><span class="chip" data-meaning="then returned to a higher level" data-ex="Numbers dropped sharply in 2008 before recovering to pre-crisis levels by 2011.">before recovering</span>
+            <span class="chip" data-meaning="used to introduce the next trend that followed" data-ex="Figures rose to a peak of 90% in 2019, after which it fell steadily.">after which it</span><span class="chip" data-meaning="then stopped changing and became flat" data-ex="Growth continued rapidly through 2012 before levelling off at around 3%.">before levelling off</span>
           </div>
           <div class="example-box">
             <em>The number of visitors rose sharply from 2.1 million in 2010, before peaking at 4.6 million in 2018, after which it declined slightly.</em>
@@ -1166,22 +1171,22 @@
         <div class="card">
           <div class="card-title">Comparison language</div>
           <div class="vocab-grid">
-            <span class="chip accent" data-ex="The UK recorded the highest proportion of internet users at 78%.">the highest / greatest</span><span class="chip accent" data-ex="Italy had the lowest figure at just 61%, well below the European average.">the lowest / smallest</span>
-            <span class="chip blue" data-ex="Norway's rate was more than double that of Italy in the same year.">more than double</span><span class="chip blue" data-ex="The figure for France was approximately three times as high as that of Poland.">approximately three times as high as</span>
-            <span class="chip green" data-ex="Urban consumption was significantly higher than rural consumption across all categories.">significantly higher than</span><span class="chip green" data-ex="Female participation was considerably lower than that of males in 2010.">considerably lower than</span>
-            <span class="chip" data-ex="The UK stood marginally above France, at 76% versus 74%.">marginally above</span><span class="chip" data-ex="Germany's score was slightly below the European average of 72%.">slightly below</span>
-            <span class="chip gold" data-ex="In contrast to Norway, Italy recorded a much lower proportion of daily internet users.">in contrast to</span><span class="chip gold" data-ex="Compared with 2010, the figure had nearly doubled by 2020.">compared with</span>
+            <span class="chip accent" data-meaning="the largest value in the data set" data-ex="The UK recorded the highest proportion of internet users at 78%.">the highest / greatest</span><span class="chip accent" data-meaning="the smallest value in the data set" data-ex="Italy had the lowest figure at just 61%, well below the European average.">the lowest / smallest</span>
+            <span class="chip blue" data-meaning="over twice as much as another value" data-ex="Norway's rate was more than double that of Italy in the same year.">more than double</span><span class="chip blue" data-meaning="about three times the value of something else" data-ex="The figure for France was approximately three times as high as that of Poland.">approximately three times as high as</span>
+            <span class="chip green" data-meaning="noticeably and clearly greater than" data-ex="Urban consumption was significantly higher than rural consumption across all categories.">significantly higher than</span><span class="chip green" data-meaning="noticeably and clearly less than" data-ex="Female participation was considerably lower than that of males in 2010.">considerably lower than</span>
+            <span class="chip" data-meaning="just slightly higher than another value" data-ex="The UK stood marginally above France, at 76% versus 74%.">marginally above</span><span class="chip" data-meaning="a little lower than another value" data-ex="Germany's score was slightly below the European average of 72%.">slightly below</span>
+            <span class="chip gold" data-meaning="when compared against something with an opposite result" data-ex="In contrast to Norway, Italy recorded a much lower proportion of daily internet users.">in contrast to</span><span class="chip gold" data-meaning="when set alongside something else for comparison" data-ex="Compared with 2010, the figure had nearly doubled by 2020.">compared with</span>
           </div>
           <div class="card-title" style="margin-top:18px;">Category verbs</div>
           <div class="vocab-grid">
-            <span class="chip" data-ex="The transport sector accounted for 25% of total carbon emissions.">accounted for</span><span class="chip" data-ex="France recorded a figure of 74%, just below the European average.">recorded</span><span class="chip" data-ex="The unemployment rate stood at 8.5% in 2015, the highest in the region.">stood at</span>
-            <span class="chip" data-ex="Government spending on education reached its highest level in over a decade.">reached</span><span class="chip" data-ex="Energy consumption was recorded at 450 TWh in 2022.">was recorded at</span><span class="chip" data-ex="The education sector showed a figure of 12% of total expenditure.">showed a figure of</span>
+            <span class="chip" data-meaning="made up or represented a proportion of the total" data-ex="The transport sector accounted for 25% of total carbon emissions.">accounted for</span><span class="chip" data-meaning="had a measured value of" data-ex="France recorded a figure of 74%, just below the European average.">recorded</span><span class="chip" data-meaning="was at a particular level or value" data-ex="The unemployment rate stood at 8.5% in 2015, the highest in the region.">stood at</span>
+            <span class="chip" data-meaning="arrived at a particular value or level" data-ex="Government spending on education reached its highest level in over a decade.">reached</span><span class="chip" data-meaning="was officially measured to be" data-ex="Energy consumption was recorded at 450 TWh in 2022.">was recorded at</span><span class="chip" data-meaning="had a value of (slightly formal)" data-ex="The education sector showed a figure of 12% of total expenditure.">showed a figure of</span>
           </div>
           <div class="card-title" style="margin-top:18px;">Grouping language</div>
           <div class="vocab-grid">
-            <span class="chip" data-ex="The top three categories collectively accounted for over 70% of total spending.">the top three categories</span><span class="chip" data-ex="The remaining categories each contributed less than 10% to the overall total.">the remaining categories</span>
-            <span class="chip" data-ex="Both Norway and Sweden exceeded 90% in daily internet usage rates.">both … and … exceeded</span><span class="chip" data-ex="None of the categories fell below 20% in the 2022 survey.">none of the categories</span>
-            <span class="chip" data-ex="All countries showed an increase between 2010 and 2020, with the exception of Japan.">with the exception of</span>
+            <span class="chip" data-meaning="the three highest-ranked groups in the data" data-ex="The top three categories collectively accounted for over 70% of total spending.">the top three categories</span><span class="chip" data-meaning="all other groups not yet mentioned" data-ex="The remaining categories each contributed less than 10% to the overall total.">the remaining categories</span>
+            <span class="chip" data-meaning="two items both went above a certain value" data-ex="Both Norway and Sweden exceeded 90% in daily internet usage rates.">both … and … exceeded</span><span class="chip" data-meaning="not a single group in the data" data-ex="None of the categories fell below 20% in the 2022 survey.">none of the categories</span>
+            <span class="chip" data-meaning="apart from / excluding one item that differs" data-ex="All countries showed an increase between 2010 and 2020, with the exception of Japan.">with the exception of</span>
           </div>
           <div class="example-box">
             <em>The UK recorded the highest figure at 78%, more than double the proportion seen in Germany (34%), while France and Spain showed broadly similar levels at approximately 55% and 52% respectively.</em>
@@ -1367,22 +1372,22 @@
         <div class="card">
           <div class="card-title">Proportion verbs</div>
           <div class="vocab-grid">
-            <span class="chip accent" data-ex="Housing accounted for the largest share, at 35% of total expenditure.">accounted for</span><span class="chip accent" data-ex="Food and drink made up just over a quarter of all household spending.">made up</span><span class="chip accent" data-ex="Transport constituted 18% of the typical family's annual budget.">constituted</span>
-            <span class="chip blue" data-ex="Education represented the smallest share of expenditure, at only 12%.">represented</span><span class="chip blue" data-ex="The two largest segments comprised nearly 60% of the total budget.">comprised</span><span class="chip blue" data-ex="The proportion allocated to healthcare stood at approximately 15%.">stood at</span>
-            <span class="chip green" data-ex="Leisure spending amounted to just 8% of total household outgoings.">amounted to</span><span class="chip green" data-ex="The transport share was equivalent to nearly one fifth of the total.">was equivalent to</span>
+            <span class="chip accent" data-meaning="made up this share of the total" data-ex="Housing accounted for the largest share, at 35% of total expenditure.">accounted for</span><span class="chip accent" data-meaning="formed or composed this portion" data-ex="Food and drink made up just over a quarter of all household spending.">made up</span><span class="chip accent" data-meaning="formed or made up this part of the whole" data-ex="Transport constituted 18% of the typical family's annual budget.">constituted</span>
+            <span class="chip blue" data-meaning="stood for this proportion of the whole" data-ex="Education represented the smallest share of expenditure, at only 12%.">represented</span><span class="chip blue" data-meaning="included or was composed of these parts" data-ex="The two largest segments comprised nearly 60% of the total budget.">comprised</span><span class="chip blue" data-meaning="was at this percentage of the total" data-ex="The proportion allocated to healthcare stood at approximately 15%.">stood at</span>
+            <span class="chip green" data-meaning="came to a total of this amount" data-ex="Leisure spending amounted to just 8% of total household outgoings.">amounted to</span><span class="chip green" data-meaning="was equal in value to something else" data-ex="The transport share was equivalent to nearly one fifth of the total.">was equivalent to</span>
           </div>
           <div class="card-title" style="margin-top:18px;">Fraction phrases (mix with % for band 7+)</div>
           <div class="vocab-grid">
-            <span class="chip" data-ex="Housing accounted for just over a third of all spending, at 35%.">just over a third (35%)</span><span class="chip" data-ex="Food represented approximately one quarter of total household costs, at 25%.">approximately one quarter (25%)</span>
-            <span class="chip" data-ex="Transport consumed nearly one fifth of the annual budget, at around 18%.">nearly one fifth (18%)</span><span class="chip" data-ex="Education stood at just under an eighth of total expenditure, at 12%.">just under an eighth (12%)</span>
-            <span class="chip" data-ex="Other expenses accounted for roughly a tenth of all spending at 10%.">a tenth (10%)</span><span class="chip" data-ex="Combined, housing and food accounted for more than half of total outgoings.">more than half (50%+)</span>
-            <span class="chip" data-ex="Renewable sources generated almost two thirds of the country's electricity in 2022.">almost two thirds (65%)</span><span class="chip" data-ex="The vast majority of respondents — over three quarters — preferred digital over print.">the vast majority (75%+)</span>
+            <span class="chip" data-meaning="slightly more than 33% — use instead of just saying '35%'" data-ex="Housing accounted for just over a third of all spending, at 35%.">just over a third (35%)</span><span class="chip" data-meaning="roughly 25% — pairs a fraction with a percentage" data-ex="Food represented approximately one quarter of total household costs, at 25%.">approximately one quarter (25%)</span>
+            <span class="chip" data-meaning="close to 20% — avoids repeating the percentage" data-ex="Transport consumed nearly one fifth of the annual budget, at around 18%.">nearly one fifth (18%)</span><span class="chip" data-meaning="slightly less than 12.5% — a precise fraction phrase" data-ex="Education stood at just under an eighth of total expenditure, at 12%.">just under an eighth (12%)</span>
+            <span class="chip" data-meaning="exactly or approximately 10% of the total" data-ex="Other expenses accounted for roughly a tenth of all spending at 10%.">a tenth (10%)</span><span class="chip" data-meaning="over 50% — used when two segments combine" data-ex="Combined, housing and food accounted for more than half of total outgoings.">more than half (50%+)</span>
+            <span class="chip" data-meaning="close to 66% — stronger than saying 'most'" data-ex="Renewable sources generated almost two thirds of the country's electricity in 2022.">almost two thirds (65%)</span><span class="chip" data-meaning="over 75% — emphasises clear dominance" data-ex="The vast majority of respondents — over three quarters — preferred digital over print.">the vast majority (75%+)</span>
           </div>
           <div class="card-title" style="margin-top:18px;">Dominance language</div>
           <div class="vocab-grid">
-            <span class="chip accent" data-ex="Housing took the largest share, accounting for 35% of all expenditure.">the largest share</span><span class="chip accent" data-ex="Petrol was by far the dominant category, representing nearly half the total cost.">by far the dominant category</span>
-            <span class="chip blue" data-ex="Education received the smallest proportion of funding, at only 5%.">the smallest proportion</span><span class="chip blue" data-ex="Other miscellaneous expenses contributed a negligible share of under 3%.">a negligible share</span>
-            <span class="chip" data-ex="The cost of housing dwarfed the other categories, being more than double the next largest.">dwarfed the other categories</span><span class="chip" data-ex="Combined, these two segments represented over half of total annual spending.">combined, these two segments</span>
+            <span class="chip accent" data-meaning="the biggest portion of the total" data-ex="Housing took the largest share, accounting for 35% of all expenditure.">the largest share</span><span class="chip accent" data-meaning="clearly the biggest group, with no close rival" data-ex="Petrol was by far the dominant category, representing nearly half the total cost.">by far the dominant category</span>
+            <span class="chip blue" data-meaning="the least amount compared to all other items" data-ex="Education received the smallest proportion of funding, at only 5%.">the smallest proportion</span><span class="chip blue" data-meaning="an amount so small it is barely worth mentioning" data-ex="Other miscellaneous expenses contributed a negligible share of under 3%.">a negligible share</span>
+            <span class="chip" data-meaning="was so much larger it made others look tiny by comparison" data-ex="The cost of housing dwarfed the other categories, being more than double the next largest.">dwarfed the other categories</span><span class="chip" data-meaning="when these two parts are added together" data-ex="Combined, these two segments represented over half of total annual spending.">combined, these two segments</span>
           </div>
           <div class="card-title" style="margin-top:18px;">Words to avoid in pie charts</div>
           <div class="avoid-row"><span class="avoid-bad">increased to 35%</span><span class="avoid-arrow">→</span><span class="avoid-good">accounted for 35%</span></div>
@@ -1576,20 +1581,20 @@
         <div class="card">
           <div class="card-title">Selecting data language</div>
           <div class="vocab-grid">
-            <span class="chip accent" data-ex="The most notable feature is the dramatic rise in Brazil's education spending between 2000 and 2020.">the most notable feature</span><span class="chip accent" data-ex="Particularly striking is the contrast between Japan's decline and Brazil's near-doubling of its budget.">particularly striking is</span>
-            <span class="chip blue" data-ex="It is worth noting that Japan was the only country to record a decline over the period.">it is worth noting that</span><span class="chip blue" data-ex="Of particular interest is the stark contrast between Germany's modest rise and Brazil's dramatic increase.">of particular interest</span>
-            <span class="chip green" data-ex="A clear exception to this upward trend was Japan, which saw a slight fall from 3.6% to 3.2%.">a clear exception to this</span><span class="chip green" data-ex="In contrast to the general pattern of growth, Japan's spending actually decreased over the period.">in contrast to the general pattern</span>
+            <span class="chip accent" data-meaning="the most important or striking observation in the data" data-ex="The most notable feature is the dramatic rise in Brazil's education spending between 2000 and 2020.">the most notable feature</span><span class="chip accent" data-meaning="especially noticeable or surprising" data-ex="Particularly striking is the contrast between Japan's decline and Brazil's near-doubling of its budget.">particularly striking is</span>
+            <span class="chip blue" data-meaning="this detail deserves special attention" data-ex="It is worth noting that Japan was the only country to record a decline over the period.">it is worth noting that</span><span class="chip blue" data-meaning="especially worthy of closer attention" data-ex="Of particular interest is the stark contrast between Germany's modest rise and Brazil's dramatic increase.">of particular interest</span>
+            <span class="chip green" data-meaning="one item that does not follow the general pattern" data-ex="A clear exception to this upward trend was Japan, which saw a slight fall from 3.6% to 3.2%.">a clear exception to this</span><span class="chip green" data-meaning="going against what the rest of the data shows" data-ex="In contrast to the general pattern of growth, Japan's spending actually decreased over the period.">in contrast to the general pattern</span>
           </div>
           <div class="card-title" style="margin-top:18px;">Cross-referencing rows and columns</div>
           <div class="vocab-grid">
-            <span class="chip" data-ex="Across all five countries, education spending increased between 2000 and 2020.">across all countries / categories</span><span class="chip" data-ex="In every case, the 2020 figure exceeded that recorded in 2000.">in every case</span>
-            <span class="chip" data-ex="For the majority of countries, education spending rose by more than one percentage point.">for the majority of</span><span class="chip" data-ex="All nations increased their spending, with the exception of Japan, which saw a slight fall.">with the exception of</span>
-            <span class="chip" data-ex="In both the USA and Germany, figures rose by less than one percentage point over the period.">in both … and …</span><span class="chip" data-ex="For 4 out of 5 countries, the proportion of GDP spent on education rose between 2000 and 2020.">for X out of Y countries</span>
+            <span class="chip" data-meaning="looking at every item in the data without exception" data-ex="Across all five countries, education spending increased between 2000 and 2020.">across all countries / categories</span><span class="chip" data-meaning="without any exception at all" data-ex="In every case, the 2020 figure exceeded that recorded in 2000.">in every case</span>
+            <span class="chip" data-meaning="for most but not all of the items" data-ex="For the majority of countries, education spending rose by more than one percentage point.">for the majority of</span><span class="chip" data-meaning="excluding one item that behaves differently" data-ex="All nations increased their spending, with the exception of Japan, which saw a slight fall.">with the exception of</span>
+            <span class="chip" data-meaning="a pattern that applies to two specific items" data-ex="In both the USA and Germany, figures rose by less than one percentage point over the period.">in both … and …</span><span class="chip" data-meaning="specifies exactly how many items share a pattern" data-ex="For 4 out of 5 countries, the proportion of GDP spent on education rose between 2000 and 2020.">for X out of Y countries</span>
           </div>
           <div class="card-title" style="margin-top:18px;">Approximate language (essential for tables)</div>
           <div class="vocab-grid">
-            <span class="chip" data-ex="Japan spent approximately 3.2% of GDP on education in 2020, down from 3.6% in 2000.">approximately</span><span class="chip" data-ex="Roughly half of the countries recorded spending above 5% of GDP by 2020.">roughly</span><span class="chip" data-ex="Germany's figure remained around 5% throughout the entire period.">around</span>
-            <span class="chip" data-ex="Brazil's figure of 6.3% was just over double its 2000 level of 4.0%.">just over / under</span><span class="chip" data-ex="The UK's spending nearly doubled over the period, rising from 4.5% to 5.8%.">nearly</span><span class="chip" data-ex="Germany's proportion remained close to 5% for the duration of the period.">close to</span>
+            <span class="chip" data-meaning="close to but not exactly — avoids false precision" data-ex="Japan spent approximately 3.2% of GDP on education in 2020, down from 3.6% in 2000.">approximately</span><span class="chip" data-meaning="in approximate terms, not precise" data-ex="Roughly half of the countries recorded spending above 5% of GDP by 2020.">roughly</span><span class="chip" data-meaning="near to a value without being exact" data-ex="Germany's figure remained around 5% throughout the entire period.">around</span>
+            <span class="chip" data-meaning="a tiny amount above or below a value" data-ex="Brazil's figure of 6.3% was just over double its 2000 level of 4.0%.">just over / under</span><span class="chip" data-meaning="very close to, but not quite reaching" data-ex="The UK's spending nearly doubled over the period, rising from 4.5% to 5.8%.">nearly</span><span class="chip" data-meaning="near but not exactly at a value" data-ex="Germany's proportion remained close to 5% for the duration of the period.">close to</span>
           </div>
           <div class="example-box">
             <em>Across all five countries, spending on healthcare increased between 2000 and 2020, although the rate of growth varied considerably. Japan recorded the most dramatic rise, from 7.5% to 11.2%, while the UK showed the smallest increase at just 1.8 percentage points.</em>
@@ -1779,28 +1784,28 @@
         <div class="card">
           <div class="card-title">Location language</div>
           <div class="vocab-grid">
-            <span class="chip accent" data-ex="A new school was built in the north of the town, replacing the old farmland.">in the north / south / east / west</span>
-            <span class="chip accent" data-ex="A large shopping centre was developed at the centre of the town plan by 2020.">in the centre / at the centre of</span>
-            <span class="chip blue" data-ex="The park is situated to the north of the residential area shown in both maps.">to the north of</span><span class="chip blue" data-ex="A car park was constructed adjacent to the station to serve commuters.">adjacent to</span>
-            <span class="chip blue" data-ex="The new cycle path runs alongside the river for the entire length of the town.">alongside</span><span class="chip blue" data-ex="A hotel was built opposite the train station on the eastern side of the road.">opposite</span>
-            <span class="chip green" data-ex="The factory, located in the northern part of the town, was demolished by 2020.">in the northern part of</span><span class="chip green" data-ex="New residential apartments were constructed on the eastern side of the river.">on the eastern side</span>
-            <span class="chip" data-ex="A large forest is visible at the top of the map in both the 1990 and 2020 versions.">at the top / bottom of the map</span>
+            <span class="chip accent" data-meaning="in that compass direction of the area" data-ex="A new school was built in the north of the town, replacing the old farmland.">in the north / south / east / west</span>
+            <span class="chip accent" data-meaning="in the middle of the area shown" data-ex="A large shopping centre was developed at the centre of the town plan by 2020.">in the centre / at the centre of</span>
+            <span class="chip blue" data-meaning="positioned above something else on the map" data-ex="The park is situated to the north of the residential area shown in both maps.">to the north of</span><span class="chip blue" data-meaning="directly next to, sharing a border" data-ex="A car park was constructed adjacent to the station to serve commuters.">adjacent to</span>
+            <span class="chip blue" data-meaning="running parallel and right beside something" data-ex="The new cycle path runs alongside the river for the entire length of the town.">alongside</span><span class="chip blue" data-meaning="directly facing, on the other side of a road" data-ex="A hotel was built opposite the train station on the eastern side of the road.">opposite</span>
+            <span class="chip green" data-meaning="in the upper section of the mapped area" data-ex="The factory, located in the northern part of the town, was demolished by 2020.">in the northern part of</span><span class="chip green" data-meaning="on the right-hand side of the mapped area" data-ex="New residential apartments were constructed on the eastern side of the river.">on the eastern side</span>
+            <span class="chip" data-meaning="at the upper or lower edge of the map image" data-ex="A large forest is visible at the top of the map in both the 1990 and 2020 versions.">at the top / bottom of the map</span>
           </div>
           <div class="card-title" style="margin-top:18px;">Change / transformation verbs (passive voice)</div>
           <div class="vocab-grid">
-            <span class="chip accent" data-ex="The old factory was demolished to make way for a modern housing estate.">was demolished</span><span class="chip accent" data-ex="A new bridge was constructed across the river to improve connectivity.">was constructed</span>
-            <span class="chip accent" data-ex="The farmland in the north-west was replaced by a large housing estate by 2020.">was replaced by</span><span class="chip blue" data-ex="The disused warehouse was converted into luxury residential flats.">was converted into</span>
-            <span class="chip blue" data-ex="The railway line was extended southwards to serve the new suburbs.">was extended</span><span class="chip blue" data-ex="The bus station was relocated to the east of the town centre in 2010.">was relocated</span>
-            <span class="chip green" data-ex="The eastern bank of the river was developed into a thriving business district.">was developed</span><span class="chip green" data-ex="The car park in the south was removed and replaced by a public green space.">was removed</span>
-            <span class="chip" data-ex="The residential area in the south-west remained unchanged throughout the entire period.">remained unchanged</span><span class="chip" data-ex="The original church was retained and incorporated into the new town square design.">was retained</span>
+            <span class="chip accent" data-meaning="was knocked down and removed" data-ex="The old factory was demolished to make way for a modern housing estate.">was demolished</span><span class="chip accent" data-meaning="was built or erected" data-ex="A new bridge was constructed across the river to improve connectivity.">was constructed</span>
+            <span class="chip accent" data-meaning="was removed and something new put in its place" data-ex="The farmland in the north-west was replaced by a large housing estate by 2020.">was replaced by</span><span class="chip blue" data-meaning="was changed in function to become something else" data-ex="The disused warehouse was converted into luxury residential flats.">was converted into</span>
+            <span class="chip blue" data-meaning="was made larger or longer than before" data-ex="The railway line was extended southwards to serve the new suburbs.">was extended</span><span class="chip blue" data-meaning="was moved to a different position" data-ex="The bus station was relocated to the east of the town centre in 2010.">was relocated</span>
+            <span class="chip green" data-meaning="was built on or improved with new structures" data-ex="The eastern bank of the river was developed into a thriving business district.">was developed</span><span class="chip green" data-meaning="was taken away and no longer exists" data-ex="The car park in the south was removed and replaced by a public green space.">was removed</span>
+            <span class="chip" data-meaning="stayed exactly the same as the earlier map" data-ex="The residential area in the south-west remained unchanged throughout the entire period.">remained unchanged</span><span class="chip" data-meaning="was kept and not removed or altered" data-ex="The original church was retained and incorporated into the new town square design.">was retained</span>
           </div>
           <div class="card-title" style="margin-top:18px;">Comparing two maps (time)</div>
           <div class="vocab-grid">
-            <span class="chip" data-ex="The town centre underwent significant changes between 1990 and 2020, with several key buildings demolished.">underwent significant changes</span>
-            <span class="chip" data-ex="The northern industrial zone was transformed considerably, with factories replaced by business parks.">was transformed considerably</span>
-            <span class="chip" data-ex="By 2020, the area had been completely redeveloped into a modern residential neighbourhood.">by [year], the area had been</span>
-            <span class="chip" data-ex="The most notable development was the construction of a new dual carriageway bypassing the town centre.">the most notable development was</span>
-            <span class="chip" data-ex="One key change involved the conversion of farmland in the north-west into a large housing estate.">one key change involved</span>
+            <span class="chip" data-meaning="experienced major differences over the time period" data-ex="The town centre underwent significant changes between 1990 and 2020, with several key buildings demolished.">underwent significant changes</span>
+            <span class="chip" data-meaning="changed a great deal from its original state" data-ex="The northern industrial zone was transformed considerably, with factories replaced by business parks.">was transformed considerably</span>
+            <span class="chip" data-meaning="by that point in time, the location had become…" data-ex="By 2020, the area had been completely redeveloped into a modern residential neighbourhood.">by [year], the area had been</span>
+            <span class="chip" data-meaning="the biggest or most important change to highlight" data-ex="The most notable development was the construction of a new dual carriageway bypassing the town centre.">the most notable development was</span>
+            <span class="chip" data-meaning="one important difference worth describing" data-ex="One key change involved the conversion of farmland in the north-west into a large housing estate.">one key change involved</span>
           </div>
           <div class="example-box">
             <em>The factory in the north of the town was demolished and replaced by a housing estate, while the road in the centre was widened to accommodate increased traffic.</em>
@@ -2007,29 +2012,29 @@
         <div class="card">
           <div class="card-title">Sequencing connectors</div>
           <div class="vocab-grid">
-            <span class="chip accent" data-ex="Firstly, rainwater is collected in a large reservoir before entering the treatment system.">firstly / first of all</span><span class="chip accent" data-ex="Initially, the raw materials are gathered from the forest and transported to the mill.">initially</span>
-            <span class="chip blue" data-ex="Subsequently, the liquid is passed through a filtration system to remove impurities.">subsequently</span><span class="chip blue" data-ex="Following this, the mixture is heated to a precise temperature of 80°C.">following this</span>
-            <span class="chip blue" data-ex="Once the material has been cleaned, it is moved to the next stage of the process.">once … has been</span><span class="chip green" data-ex="At the next stage, the water is treated with chlorine to eliminate any bacteria.">at the next stage</span>
-            <span class="chip green" data-ex="After that, the product is cooled and prepared for the final packaging stage.">after that</span><span class="chip green" data-ex="The filtration stage is then followed by a chemical treatment process.">this is then followed by</span>
-            <span class="chip" data-ex="At the final stage, the finished product is inspected for quality before distribution.">at the final stage</span><span class="chip" data-ex="Ultimately, the treated water is pumped to homes and businesses across the region.">ultimately</span><span class="chip" data-ex="The larvae eventually develop into fully grown adult butterflies after several weeks.">eventually</span>
+            <span class="chip accent" data-meaning="at the beginning, before anything else happens" data-ex="Firstly, rainwater is collected in a large reservoir before entering the treatment system.">firstly / first of all</span><span class="chip accent" data-meaning="at the very start of the process" data-ex="Initially, the raw materials are gathered from the forest and transported to the mill.">initially</span>
+            <span class="chip blue" data-meaning="happening after something else has occurred" data-ex="Subsequently, the liquid is passed through a filtration system to remove impurities.">subsequently</span><span class="chip blue" data-meaning="coming directly after the previous step" data-ex="Following this, the mixture is heated to a precise temperature of 80°C.">following this</span>
+            <span class="chip blue" data-meaning="after this action is completed, the next begins" data-ex="Once the material has been cleaned, it is moved to the next stage of the process.">once … has been</span><span class="chip green" data-meaning="moving on to the following step in sequence" data-ex="At the next stage, the water is treated with chlorine to eliminate any bacteria.">at the next stage</span>
+            <span class="chip green" data-meaning="then, following on from the previous step" data-ex="After that, the product is cooled and prepared for the final packaging stage.">after that</span><span class="chip green" data-meaning="the next thing that happens in the sequence is" data-ex="The filtration stage is then followed by a chemical treatment process.">this is then followed by</span>
+            <span class="chip" data-meaning="at the last step before the process ends" data-ex="At the final stage, the finished product is inspected for quality before distribution.">at the final stage</span><span class="chip" data-meaning="at the very end, as the final result" data-ex="Ultimately, the treated water is pumped to homes and businesses across the region.">ultimately</span><span class="chip" data-meaning="after all the stages have been completed" data-ex="The larvae eventually develop into fully grown adult butterflies after several weeks.">eventually</span>
           </div>
           <div class="card-title" style="margin-top:18px;">Passive voice structures</div>
           <div class="vocab-grid">
-            <span class="chip accent" data-ex="Rainwater is collected in a large underground tank beneath the treatment facility.">is collected / are gathered</span>
-            <span class="chip accent" data-ex="The raw material is transported to the processing plant by conveyor belt.">is transported to</span>
-            <span class="chip blue" data-ex="The liquid is heated to 200°C to remove all remaining impurities.">is heated / cooled / filtered</span>
-            <span class="chip blue" data-ex="Sugarcane is converted into bioethanol through a process of fermentation.">is converted into</span>
-            <span class="chip green" data-ex="The water is then passed through a series of fine filters to remove particles.">is then passed through</span>
-            <span class="chip green" data-ex="The finished product is finally packaged and distributed to supermarkets nationwide.">is finally packaged / distributed</span>
-            <span class="chip" data-ex="The crushed ore is fed into a large smelting machine at high temperature.">is fed into</span><span class="chip" data-ex="The water is treated with chlorine and fluoride before being pumped to consumers.">is treated with</span>
+            <span class="chip accent" data-meaning="is picked up or brought together from a source" data-ex="Rainwater is collected in a large underground tank beneath the treatment facility.">is collected / are gathered</span>
+            <span class="chip accent" data-meaning="is moved or carried to another location" data-ex="The raw material is transported to the processing plant by conveyor belt.">is transported to</span>
+            <span class="chip blue" data-meaning="has its temperature changed or is cleaned of impurities" data-ex="The liquid is heated to 200°C to remove all remaining impurities.">is heated / cooled / filtered</span>
+            <span class="chip blue" data-meaning="is changed in form to become something new" data-ex="Sugarcane is converted into bioethanol through a process of fermentation.">is converted into</span>
+            <span class="chip green" data-meaning="is moved through a device, filter or chamber" data-ex="The water is then passed through a series of fine filters to remove particles.">is then passed through</span>
+            <span class="chip green" data-meaning="is put into containers and sent to its destination" data-ex="The finished product is finally packaged and distributed to supermarkets nationwide.">is finally packaged / distributed</span>
+            <span class="chip" data-meaning="is put into a machine or system for processing" data-ex="The crushed ore is fed into a large smelting machine at high temperature.">is fed into</span><span class="chip" data-meaning="has a chemical or substance applied to it" data-ex="The water is treated with chlorine and fluoride before being pumped to consumers.">is treated with</span>
           </div>
           <div class="card-title" style="margin-top:18px;">Process description phrases</div>
           <div class="vocab-grid">
-            <span class="chip" data-ex="The process begins with the harvesting of raw cotton from the fields.">the process begins with</span>
-            <span class="chip" data-ex="At this point, the temperature is raised to 200°C to trigger the chemical reaction.">at this point</span>
-            <span class="chip" data-ex="This stage involves the separation of solids from liquids using centrifugal force.">this stage involves</span>
-            <span class="chip" data-ex="The cycle is complete when the adult insect emerges and lays a new set of eggs.">the cycle is complete when</span>
-            <span class="chip" data-ex="The material is thoroughly cleaned before being transferred to the next stage.">before being</span><span class="chip" data-ex="Having been filtered, the water is now safe for human consumption.">having been [verb-ed]</span>
+            <span class="chip" data-meaning="the first action in the whole sequence" data-ex="The process begins with the harvesting of raw cotton from the fields.">the process begins with</span>
+            <span class="chip" data-meaning="at this specific moment in the process" data-ex="At this point, the temperature is raised to 200°C to trigger the chemical reaction.">at this point</span>
+            <span class="chip" data-meaning="the action taking place at this step is" data-ex="This stage involves the separation of solids from liquids using centrifugal force.">this stage involves</span>
+            <span class="chip" data-meaning="the process ends at the moment that…" data-ex="The cycle is complete when the adult insect emerges and lays a new set of eggs.">the cycle is complete when</span>
+            <span class="chip" data-meaning="prior to the next action in the sequence" data-ex="The material is thoroughly cleaned before being transferred to the next stage.">before being</span><span class="chip" data-meaning="after this action has already taken place" data-ex="Having been filtered, the water is now safe for human consumption.">having been [verb-ed]</span>
           </div>
           <div class="example-box">
             <em>Initially, raw materials are gathered and transported to the processing plant. Subsequently, they are heated to a specific temperature before being filtered through a series of chambers.</em>
@@ -2348,41 +2353,35 @@ function showSubTab(section, tab) {
     const url = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=bn&dt=t&q=' + encodeURIComponent(word);
     fetch(url)
       .then(r => r.json())
-      .then(data => {
-        const bn = (data[0] || []).map(x => x[0]).join('');
-        cache[word] = bn;
-        cb(bn);
-      })
-      .catch(() => { cache[word] = ''; cb(''); });
+      .then(data => { const bn = (data[0]||[]).map(x=>x[0]).join(''); cache[word]=bn; cb(bn); })
+      .catch(() => { cache[word]=''; cb(''); });
   }
 
   function render(chip, bn){
-    const ex   = chip.dataset.ex || '';
-    const word = chip.textContent.trim();
-    const safe = word.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-    const highlighted = ex.replace(new RegExp('('+safe+')', 'i'), '<mark>$1</mark>');
+    const ex      = chip.dataset.ex || '';
+    const meaning = chip.dataset.meaning || '';
+    const word    = chip.textContent.trim();
+    const safe    = word.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    const highlighted = ex.replace(new RegExp('('+safe+')','i'),'<mark>$1</mark>');
     tip.innerHTML =
-      '<span class="tip-label">Example</span>' + highlighted +
+      '<span class="tip-label">Meaning</span>' +
+      '<span class="tip-meaning">' + meaning + '</span>' +
       '<hr class="tip-divider">' +
       '<span class="tip-label">বাংলা অর্থ</span>' +
-      '<span class="tip-bn' + (bn === null ? ' loading' : '') + '">' +
-        (bn === null ? 'অনুবাদ হচ্ছে…' : (bn || '—')) +
-      '</span>';
+      '<span class="tip-bn' + (bn===null?' loading':'') + '">' + (bn===null?'অনুবাদ হচ্ছে…':(bn||'—')) + '</span>' +
+      '<hr class="tip-divider">' +
+      '<span class="tip-label">Example</span>' +
+      highlighted;
   }
 
   function show(chip){
     clearTimeout(hideTimer);
     currentChip = chip;
-    render(chip, null);           // show immediately with loading state
+    render(chip, null);
     tip.style.opacity = '1';
     reposition(chip);
-
-    const word = chip.textContent.trim();
-    translate(word, bn => {
-      if(currentChip === chip){   // still hovering same chip
-        render(chip, bn);
-        reposition(chip);
-      }
+    translate(chip.textContent.trim(), bn => {
+      if(currentChip === chip){ render(chip, bn); reposition(chip); }
     });
   }
 
@@ -2404,7 +2403,7 @@ function showSubTab(section, tab) {
     const chip = e.target.closest('.chip[data-ex]');
     if(chip) show(chip); else hide();
   });
-  document.addEventListener('scroll', () => { tip.style.opacity='0'; currentChip=null; }, true);
+  document.addEventListener('scroll', ()=>{ tip.style.opacity='0'; currentChip=null; }, true);
 })();
 </script>
 </body>
