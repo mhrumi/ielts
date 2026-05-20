@@ -2809,7 +2809,7 @@ const charts = {};
 
 function initLineChart() {
   const ctx = document.getElementById('lineChart');
-  if (!ctx) return;
+  if (!ctx || charts.line) return;
   charts.line = new Chart(ctx, {
     type: 'line',
     data: {
@@ -2826,7 +2826,7 @@ function initLineChart() {
 
 function initBarChart() {
   const ctx = document.getElementById('barChart');
-  if (!ctx) return;
+  if (!ctx || charts.bar) return;
   charts.bar = new Chart(ctx, {
     type: 'bar',
     data: {

@@ -961,7 +961,7 @@
 <!-- SIDEBAR -->
 <nav class="sidebar">
   <div class="sidebar-header">
-    <a class="sidebar-logo-link" href="../">
+    <a class="sidebar-logo-link" href="../index.html">
       <div class="sidebar-logo">IELTS <span>Academic</span></div>
       <div class="sidebar-sub">Complete Preparation</div>
     </a>
@@ -1021,7 +1021,7 @@
 
   <!-- ── Reading ── -->
   <div class="sidebar-part">
-    <a class="part-header part-link" href="../reading/">
+    <a class="part-header part-link" href="../reading/index.html">
       <span class="part-icon">📖</span>
       <span class="part-name">Reading</span>
       <span class="soon-badge">Soon</span>
@@ -1030,7 +1030,7 @@
 
   <!-- ── Listening ── -->
   <div class="sidebar-part">
-    <a class="part-header part-link" href="../listening/">
+    <a class="part-header part-link" href="../listening/index.html">
       <span class="part-icon">🎧</span>
       <span class="part-name">Listening</span>
       <span class="soon-badge">Soon</span>
@@ -1039,7 +1039,7 @@
 
   <!-- ── Speaking ── -->
   <div class="sidebar-part">
-    <a class="part-header part-link" href="../speaking/">
+    <a class="part-header part-link" href="../speaking/index.html">
       <span class="part-icon">🗣️</span>
       <span class="part-name">Speaking</span>
       <span class="soon-badge">Soon</span>
@@ -2823,7 +2823,7 @@ const charts = {};
 
 function initLineChart() {
   const ctx = document.getElementById('lineChart');
-  if (!ctx) return;
+  if (!ctx || charts.line) return;
   charts.line = new Chart(ctx, {
     type: 'line',
     data: {
@@ -2840,7 +2840,7 @@ function initLineChart() {
 
 function initBarChart() {
   const ctx = document.getElementById('barChart');
-  if (!ctx) return;
+  if (!ctx || charts.bar) return;
   charts.bar = new Chart(ctx, {
     type: 'bar',
     data: {
