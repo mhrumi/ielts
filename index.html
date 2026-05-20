@@ -117,6 +117,122 @@
 
   .nav-item.active .nav-icon { background: rgba(255,255,255,0.2); }
 
+  /* ── SIDEBAR PARTS ── */
+  .sidebar-part {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .part-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    cursor: pointer;
+    transition: background 0.15s;
+    user-select: none;
+  }
+
+  .part-header:hover { background: rgba(255,255,255,0.04); }
+
+  .part-icon {
+    font-size: 15px;
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .part-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.75);
+    flex: 1;
+    letter-spacing: 0.01em;
+  }
+
+  .part-chevron {
+    font-size: 15px;
+    color: rgba(255,255,255,0.25);
+    transition: transform 0.2s;
+    line-height: 1;
+  }
+
+  .part-header.open .part-chevron { transform: rotate(90deg); }
+
+  .part-body { display: none; padding-bottom: 6px; }
+  .part-body.open { display: block; }
+
+  /* Task sub-groups */
+  .task-group { }
+
+  .task-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 18px 6px 30px;
+    cursor: pointer;
+    transition: background 0.15s;
+    user-select: none;
+  }
+
+  .task-header:hover { background: rgba(255,255,255,0.04); }
+
+  .task-header-soon {
+    cursor: default;
+    opacity: 0.5;
+  }
+  .task-header-soon:hover { background: transparent; }
+
+  .task-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    flex: 1;
+  }
+
+  .task-tag {
+    font-size: 9px;
+    padding: 1px 6px;
+    border-radius: 20px;
+    background: rgba(196,98,45,0.3);
+    color: rgba(255,160,100,0.9);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .task-chevron {
+    font-size: 13px;
+    color: rgba(255,255,255,0.25);
+    transition: transform 0.2s;
+  }
+
+  .task-group.open .task-chevron { transform: rotate(90deg); }
+
+  .task-body { display: none; }
+  .task-body.open { display: block; }
+
+  .nav-item.indent {
+    margin-left: 16px;
+    width: calc(100% - 24px);
+    padding-left: 12px;
+  }
+
+  /* Soon badge */
+  .soon-badge {
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
   /* ── MAIN ── */
   .main {
     margin-left: 260px;
@@ -776,31 +892,89 @@
 <!-- SIDEBAR -->
 <nav class="sidebar">
   <div class="sidebar-header">
-    <div class="sidebar-logo">IELTS <span>Task 1</span><br>Master Guide</div>
-    <div class="sidebar-sub">Academic Writing</div>
+    <div class="sidebar-logo">IELTS <span>Academic</span></div>
+    <div class="sidebar-sub">Complete Preparation</div>
   </div>
-  <div class="sidebar-section">Chart Types</div>
-  <button class="nav-item active" onclick="showSection('overview')">
-    <span class="nav-icon">🏠</span> Overview
-  </button>
-  <button class="nav-item" onclick="showSection('line')">
-    <span class="nav-icon">📈</span> Line Graph
-  </button>
-  <button class="nav-item" onclick="showSection('bar')">
-    <span class="nav-icon">📊</span> Bar Chart
-  </button>
-  <button class="nav-item" onclick="showSection('pie')">
-    <span class="nav-icon">🥧</span> Pie Chart
-  </button>
-  <button class="nav-item" onclick="showSection('table')">
-    <span class="nav-icon">📋</span> Table
-  </button>
-  <button class="nav-item" onclick="showSection('map')">
-    <span class="nav-icon">🗺️</span> Map
-  </button>
-  <button class="nav-item" onclick="showSection('process')">
-    <span class="nav-icon">⚙️</span> Process Diagram
-  </button>
+
+  <!-- ── Writing ── -->
+  <div class="sidebar-part" id="part-writing">
+    <div class="part-header open" onclick="togglePart('writing')">
+      <span class="part-icon">✍️</span>
+      <span class="part-name">Writing</span>
+      <span class="part-chevron">›</span>
+    </div>
+    <div class="part-body open" id="part-body-writing">
+
+      <!-- Task 1 -->
+      <div class="task-group open" id="taskgroup-t1">
+        <div class="task-header" onclick="toggleTaskGroup('t1')">
+          <span class="task-label">Task 1</span>
+          <span class="task-tag">Active</span>
+          <span class="task-chevron">›</span>
+        </div>
+        <div class="task-body open">
+          <button class="nav-item indent active" onclick="showSection('overview')">
+            <span class="nav-icon">🏠</span> Overview
+          </button>
+          <button class="nav-item indent" onclick="showSection('line')">
+            <span class="nav-icon">📈</span> Line Graph
+          </button>
+          <button class="nav-item indent" onclick="showSection('bar')">
+            <span class="nav-icon">📊</span> Bar Chart
+          </button>
+          <button class="nav-item indent" onclick="showSection('pie')">
+            <span class="nav-icon">🥧</span> Pie Chart
+          </button>
+          <button class="nav-item indent" onclick="showSection('table')">
+            <span class="nav-icon">📋</span> Table
+          </button>
+          <button class="nav-item indent" onclick="showSection('map')">
+            <span class="nav-icon">🗺️</span> Map
+          </button>
+          <button class="nav-item indent" onclick="showSection('process')">
+            <span class="nav-icon">⚙️</span> Process Diagram
+          </button>
+        </div>
+      </div>
+
+      <!-- Task 2 -->
+      <div class="task-group">
+        <div class="task-header task-header-soon">
+          <span class="task-label">Task 2</span>
+          <span class="soon-badge">Soon</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Reading ── -->
+  <div class="sidebar-part" id="part-reading">
+    <div class="part-header" onclick="togglePart('reading')">
+      <span class="part-icon">📖</span>
+      <span class="part-name">Reading</span>
+      <span class="soon-badge">Soon</span>
+    </div>
+  </div>
+
+  <!-- ── Listening ── -->
+  <div class="sidebar-part" id="part-listening">
+    <div class="part-header" onclick="togglePart('listening')">
+      <span class="part-icon">🎧</span>
+      <span class="part-name">Listening</span>
+      <span class="soon-badge">Soon</span>
+    </div>
+  </div>
+
+  <!-- ── Speaking ── -->
+  <div class="sidebar-part" id="part-speaking">
+    <div class="part-header" onclick="togglePart('speaking')">
+      <span class="part-icon">🗣️</span>
+      <span class="part-name">Speaking</span>
+      <span class="soon-badge">Soon</span>
+    </div>
+  </div>
+
 </nav>
 
 <!-- MAIN -->
@@ -2299,6 +2473,23 @@ function initStratCharts() {
       options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ' ' + c.parsed.y + '%' } } }, scales: { x: { grid: { display: false }, ticks: { font: { size: 11 }, color: '#9C9489' } }, y: { min: 0, max: 100, grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { font: { size: 10 }, color: '#9C9489', callback: v => v + '%' } } } }
     });
   }
+}
+
+function togglePart(partId) {
+  const body   = document.getElementById('part-body-' + partId);
+  const header = document.querySelector('#part-' + partId + ' .part-header');
+  if (!body) return;
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  header.classList.toggle('open', !isOpen);
+}
+
+function toggleTaskGroup(groupId) {
+  const group = document.getElementById('taskgroup-' + groupId);
+  const body  = group.querySelector('.task-body');
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  group.classList.toggle('open', !isOpen);
 }
 
 function toggleStratStep(id) {
