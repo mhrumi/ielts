@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS Speaking — Coming Soon</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F5F2EB;
+    --surface: #FFFFFF;
+    --ink: #1A1714;
+    --ink2: #5C5649;
+    --ink3: #9C9489;
+    --accent: #C4622D;
+    --accent3: #3D7A52;
+    --border: rgba(26,23,20,0.12);
+    --r: 12px;
+    --r-sm: 6px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; font-size: 15px; line-height: 1.6; }
+  .sidebar { position: fixed; top: 0; left: 0; width: 260px; height: 100vh; background: var(--ink); color: #fff; display: flex; flex-direction: column; z-index: 100; overflow-y: auto; }
+  .sidebar-header { padding: 28px 24px 20px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  a.sidebar-logo-link { text-decoration: none; color: inherit; }
+  .sidebar-logo { font-family: 'DM Serif Display', serif; font-size: 20px; color: #fff; line-height: 1.2; }
+  .sidebar-logo span { color: var(--accent); }
+  .sidebar-sub { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .sidebar-part { border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .part-header { display: flex; align-items: center; gap: 10px; padding: 12px 18px; cursor: pointer; transition: background 0.15s; user-select: none; }
+  .part-header:hover { background: rgba(255,255,255,0.04); }
+  .part-header.active-part { background: rgba(196,98,45,0.15); }
+  a.part-link { text-decoration: none; color: inherit; display: flex; width: 100%; }
+  .part-icon { font-size: 15px; width: 20px; text-align: center; flex-shrink: 0; line-height: 1; }
+  .part-name { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.75); flex: 1; letter-spacing: 0.01em; }
+  .part-chevron { font-size: 15px; color: rgba(255,255,255,0.25); line-height: 1; }
+  .soon-badge { font-size: 9px; font-weight: 700; padding: 2px 6px; border-radius: 4px; background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.3); letter-spacing: 0.06em; text-transform: uppercase; flex-shrink: 0; }
+  .main { margin-left: 260px; min-height: 100vh; }
+  .topbar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 40px; height: 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; }
+  .topbar-title { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--ink); }
+  .badge-band { background: var(--ink3); color: #fff; font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 20px; letter-spacing: 0.04em; }
+  .content { padding: 60px 40px; max-width: 600px; }
+  .coming-hero { background: var(--ink); border-radius: var(--r); padding: 48px 44px; position: relative; overflow: hidden; }
+  .coming-hero::before { content: ''; position: absolute; top: -40px; right: -40px; width: 200px; height: 200px; border-radius: 50%; background: rgba(61,122,82,0.15); }
+  .coming-icon { font-size: 48px; margin-bottom: 20px; position: relative; z-index: 1; }
+  .coming-hero h1 { font-family: 'DM Serif Display', serif; font-size: 32px; color: #fff; margin-bottom: 12px; position: relative; z-index: 1; }
+  .coming-hero p { color: rgba(255,255,255,0.5); font-size: 14px; line-height: 1.7; max-width: 400px; position: relative; z-index: 1; }
+  .topics { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 8px; position: relative; z-index: 1; }
+  .topic-chip { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); padding: 5px 13px; border-radius: 20px; font-size: 12px; font-family: 'DM Mono', monospace; }
+  @media (max-width: 768px) { .sidebar { width: 100%; height: auto; position: relative; } .main { margin-left: 0; } .content { padding: 24px 16px; } .topbar { padding: 0 16px; } }
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <a class="sidebar-logo-link" href="../">
+      <div class="sidebar-logo">IELTS <span>Academic</span></div>
+      <div class="sidebar-sub">Complete Preparation</div>
+    </a>
+  </div>
+  <div class="sidebar-part">
+    <a class="part-header part-link" href="../writing/">
+      <span class="part-icon">✍️</span>
+      <span class="part-name">Writing</span>
+      <span class="part-chevron">›</span>
+    </a>
+  </div>
+  <div class="sidebar-part">
+    <a class="part-header part-link" href="../reading/">
+      <span class="part-icon">📖</span>
+      <span class="part-name">Reading</span>
+      <span class="soon-badge">Soon</span>
+    </a>
+  </div>
+  <div class="sidebar-part">
+    <a class="part-header part-link" href="../listening/">
+      <span class="part-icon">🎧</span>
+      <span class="part-name">Listening</span>
+      <span class="soon-badge">Soon</span>
+    </a>
+  </div>
+  <div class="sidebar-part">
+    <div class="part-header active-part">
+      <span class="part-icon">🗣️</span>
+      <span class="part-name">Speaking</span>
+    </div>
+  </div>
+</nav>
+
+<div class="main">
+  <div class="topbar">
+    <div class="topbar-title">Speaking</div>
+    <div class="badge-band">Coming Soon</div>
+  </div>
+  <div class="content">
+    <div class="coming-hero">
+      <div class="coming-icon">🗣️</div>
+      <h1>Speaking</h1>
+      <p>Part 1, 2, and 3 strategies with vocabulary banks, fluency techniques, and annotated sample answers at band 7–9 level. This section is in development.</p>
+      <div class="topics">
+        <span class="topic-chip">Part 1 — Introduction</span>
+        <span class="topic-chip">Part 2 — Long Turn</span>
+        <span class="topic-chip">Part 3 — Discussion</span>
+        <span class="topic-chip">Fluency &amp; Coherence</span>
+        <span class="topic-chip">Lexical Resource</span>
+        <span class="topic-chip">Pronunciation</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
