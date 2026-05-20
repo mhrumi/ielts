@@ -761,6 +761,63 @@
 
   .band-crit strong { display: block; color: rgba(255,255,255,0.9); font-size: 12px; margin-bottom: 2px; }
 
+  /* ── PRACTICE QUESTIONS ── */
+  .practice-q {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+  }
+  .pq-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 22px;
+    background: var(--ink);
+  }
+  .pq-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--accent);
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 28px;
+  }
+  .pq-title { font-family: 'DM Serif Display', serif; font-size: 15px; color: #fff; }
+  .pq-type  { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+  .pq-prompt {
+    padding: 14px 22px;
+    font-size: 13.5px;
+    color: var(--ink2);
+    line-height: 1.7;
+    background: #FFFBF7;
+    border-bottom: 1px solid var(--border2);
+    font-style: italic;
+  }
+  .pq-visual { padding: 16px 22px 20px; background: var(--bg); }
+  .pq-chart  { position: relative; height: 200px; }
+  .pq-table  { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  .pq-table th { background: var(--ink); color: rgba(255,255,255,0.8); padding: 7px 12px; text-align: left; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; }
+  .pq-table td { padding: 7px 12px; border-bottom: 1px solid var(--border2); color: var(--ink2); }
+  .pq-table tr:last-child td { border-bottom: none; }
+  .pq-table tr:nth-child(even) td { background: rgba(0,0,0,0.025); }
+  .pq-paired { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .pq-pie-wrap { text-align: center; }
+  .pq-pie-label { font-size: 11px; font-weight: 600; color: var(--ink2); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .pq-pie-chart { position: relative; height: 160px; }
+  .pq-map { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .pq-map-panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 12px 14px; }
+  .pq-map-era { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 8px; }
+  .pq-map-items { font-size: 12px; color: var(--ink2); line-height: 1.85; }
+  .pq-process { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .pq-step { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 7px 11px; font-size: 11.5px; color: var(--ink); line-height: 1.4; text-align: center; max-width: 120px; }
+  .pq-arrow { color: var(--accent); font-size: 14px; flex-shrink: 0; }
+  .pq-legend { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 10px; }
+  .pq-legend-item { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--ink2); }
+  .pq-legend-dot { width: 9px; height: 9px; border-radius: 2px; flex-shrink: 0; }
+
   /* ── SCROLLBAR ── */
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: transparent; }
@@ -1078,6 +1135,7 @@
         <button class="tab-btn active" onclick="showSubTab('line','vocab')">Vocabulary</button>
         <button class="tab-btn" onclick="showSubTab('line','strategy')">Strategy</button>
         <button class="tab-btn" onclick="showSubTab('line','sample')">Band 8 Answer</button>
+        <button class="tab-btn" onclick="showSubTab('line','practice')">Practice</button>
       </div>
 
       <!-- VOCAB -->
@@ -1325,6 +1383,61 @@
           </div>
         </div>
       </div>
+
+      <!-- LINE PRACTICE -->
+      <div class="sub-tab-content" id="line-practice">
+
+        <div class="practice-q">
+          <div class="pq-header">
+            <div class="pq-num">01</div>
+            <div><div class="pq-title">Tourist Arrivals in Asia</div><div class="pq-type">Line Graph · 20 min · 150+ words</div></div>
+          </div>
+          <div class="pq-prompt">The line graph below shows the number of international tourist arrivals (in millions) in Japan, Thailand, and South Korea between 2010 and 2020. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div>
+          <div class="pq-visual">
+            <div class="pq-legend">
+              <div class="pq-legend-item"><div class="pq-legend-dot" style="background:#C4622D"></div>Japan</div>
+              <div class="pq-legend-item"><div class="pq-legend-dot" style="background:#2D6B8C"></div>Thailand</div>
+              <div class="pq-legend-item"><div class="pq-legend-dot" style="background:#3D7A52"></div>South Korea</div>
+            </div>
+            <div class="pq-chart"><canvas id="prac-line-1"></canvas></div>
+          </div>
+        </div>
+
+        <div class="practice-q">
+          <div class="pq-header">
+            <div class="pq-num">02</div>
+            <div><div class="pq-title">Household Broadband Access</div><div class="pq-type">Line Graph · 20 min · 150+ words</div></div>
+          </div>
+          <div class="pq-prompt">The graph illustrates the percentage of households with broadband internet access in Germany, Brazil, Nigeria, and India from 2005 to 2020. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div>
+          <div class="pq-visual">
+            <div class="pq-legend">
+              <div class="pq-legend-item"><div class="pq-legend-dot" style="background:#C4622D"></div>Germany</div>
+              <div class="pq-legend-item"><div class="pq-legend-dot" style="background:#2D6B8C"></div>Brazil</div>
+              <div class="pq-legend-item"><div class="pq-legend-dot" style="background:#3D7A52"></div>Nigeria</div>
+              <div class="pq-legend-item"><div class="pq-legend-dot" style="background:#B8942A"></div>India</div>
+            </div>
+            <div class="pq-chart"><canvas id="prac-line-2"></canvas></div>
+          </div>
+        </div>
+
+        <div class="practice-q">
+          <div class="pq-header">
+            <div class="pq-num">03</div>
+            <div><div class="pq-title">CO₂ Emissions Per Capita</div><div class="pq-type">Line Graph · 20 min · 150+ words</div></div>
+          </div>
+          <div class="pq-prompt">The line graph shows CO₂ emissions per capita (in tonnes) for the USA, China, the UK, and India between 2000 and 2020. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div>
+          <div class="pq-visual">
+            <div class="pq-legend">
+              <div class="pq-legend-item"><div class="pq-legend-dot" style="background:#C4622D"></div>USA</div>
+              <div class="pq-legend-item"><div class="pq-legend-dot" style="background:#2D6B8C"></div>China</div>
+              <div class="pq-legend-item"><div class="pq-legend-dot" style="background:#3D7A52"></div>UK</div>
+              <div class="pq-legend-item"><div class="pq-legend-dot" style="background:#B8942A"></div>India</div>
+            </div>
+            <div class="pq-chart"><canvas id="prac-line-3"></canvas></div>
+          </div>
+        </div>
+
+      </div><!-- /line-practice -->
     </section>
 
     <!-- ═══════ BAR CHART ═══════ -->
@@ -1339,6 +1452,7 @@
         <button class="tab-btn active" onclick="showSubTab('bar','vocab')">Vocabulary</button>
         <button class="tab-btn" onclick="showSubTab('bar','strategy')">Strategy</button>
         <button class="tab-btn" onclick="showSubTab('bar','sample')">Band 8 Answer</button>
+        <button class="tab-btn" onclick="showSubTab('bar','practice')">Practice</button>
       </div>
 
       <div class="sub-tab-content active" id="bar-vocab">
@@ -1526,6 +1640,53 @@
           </div>
         </div>
       </div>
+
+      <!-- BAR PRACTICE -->
+      <div class="sub-tab-content" id="bar-practice">
+
+        <div class="practice-q">
+          <div class="pq-header">
+            <div class="pq-num">01</div>
+            <div><div class="pq-title">Average Weekly Working Hours</div><div class="pq-type">Bar Chart · 20 min · 150+ words</div></div>
+          </div>
+          <div class="pq-prompt">The bar chart below shows the average number of hours worked per week in six countries in 2022. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div>
+          <div class="pq-visual">
+            <div class="pq-chart"><canvas id="prac-bar-1"></canvas></div>
+          </div>
+        </div>
+
+        <div class="practice-q">
+          <div class="pq-header">
+            <div class="pq-num">02</div>
+            <div><div class="pq-title">Leisure Activities by Age Group</div><div class="pq-type">Bar Chart · 20 min · 150+ words</div></div>
+          </div>
+          <div class="pq-prompt">The chart below shows the percentage of adults in the UK who regularly participated in four leisure activities in 2019, broken down by age group (18–34, 35–54, and 55+). Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div>
+          <div class="pq-visual">
+            <div class="pq-legend">
+              <div class="pq-legend-item"><div class="pq-legend-dot" style="background:#C4622D"></div>18–34</div>
+              <div class="pq-legend-item"><div class="pq-legend-dot" style="background:#2D6B8C"></div>35–54</div>
+              <div class="pq-legend-item"><div class="pq-legend-dot" style="background:#3D7A52"></div>55+</div>
+            </div>
+            <div class="pq-chart"><canvas id="prac-bar-2"></canvas></div>
+          </div>
+        </div>
+
+        <div class="practice-q">
+          <div class="pq-header">
+            <div class="pq-num">03</div>
+            <div><div class="pq-title">Electric Vehicle Sales</div><div class="pq-type">Bar Chart · 20 min · 150+ words</div></div>
+          </div>
+          <div class="pq-prompt">The bar chart illustrates the number of electric vehicles sold (in thousands) in five countries in 2018 and 2023. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div>
+          <div class="pq-visual">
+            <div class="pq-legend">
+              <div class="pq-legend-item"><div class="pq-legend-dot" style="background:#C4622D"></div>2018</div>
+              <div class="pq-legend-item"><div class="pq-legend-dot" style="background:#2D6B8C"></div>2023</div>
+            </div>
+            <div class="pq-chart"><canvas id="prac-bar-3"></canvas></div>
+          </div>
+        </div>
+
+      </div><!-- /bar-practice -->
     </section>
 
     <!-- ═══════ PIE CHART ═══════ -->
@@ -1540,6 +1701,7 @@
         <button class="tab-btn active" onclick="showSubTab('pie','vocab')">Vocabulary</button>
         <button class="tab-btn" onclick="showSubTab('pie','strategy')">Strategy</button>
         <button class="tab-btn" onclick="showSubTab('pie','sample')">Band 8 Answer</button>
+        <button class="tab-btn" onclick="showSubTab('pie','practice')">Practice</button>
       </div>
 
       <div class="sub-tab-content active" id="pie-vocab">
@@ -1735,6 +1897,53 @@
           </div>
         </div>
       </div>
+
+      <!-- PIE PRACTICE -->
+      <div class="sub-tab-content" id="pie-practice">
+
+        <div class="practice-q">
+          <div class="pq-header">
+            <div class="pq-num">01</div>
+            <div><div class="pq-title">Electricity Generation Sources</div><div class="pq-type">Pie Chart (paired) · 20 min · 150+ words</div></div>
+          </div>
+          <div class="pq-prompt">The pie charts below show the proportion of electricity generated from different sources in France and Australia in 2020. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div>
+          <div class="pq-visual">
+            <div class="pq-paired">
+              <div class="pq-pie-wrap"><div class="pq-pie-label">France</div><div class="pq-pie-chart"><canvas id="prac-pie-1a"></canvas></div></div>
+              <div class="pq-pie-wrap"><div class="pq-pie-label">Australia</div><div class="pq-pie-chart"><canvas id="prac-pie-1b"></canvas></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="practice-q">
+          <div class="pq-header">
+            <div class="pq-num">02</div>
+            <div><div class="pq-title">Causes of Deforestation</div><div class="pq-type">Pie Chart (paired) · 20 min · 150+ words</div></div>
+          </div>
+          <div class="pq-prompt">The pie charts illustrate the main causes of deforestation globally and specifically in Brazil in 2019. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div>
+          <div class="pq-visual">
+            <div class="pq-paired">
+              <div class="pq-pie-wrap"><div class="pq-pie-label">Global</div><div class="pq-pie-chart"><canvas id="prac-pie-2a"></canvas></div></div>
+              <div class="pq-pie-wrap"><div class="pq-pie-label">Brazil</div><div class="pq-pie-chart"><canvas id="prac-pie-2b"></canvas></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="practice-q">
+          <div class="pq-header">
+            <div class="pq-num">03</div>
+            <div><div class="pq-title">Household Waste Composition</div><div class="pq-type">Pie Chart (paired) · 20 min · 150+ words</div></div>
+          </div>
+          <div class="pq-prompt">The charts below show the composition of household waste in the UK in 2000 and 2020. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div>
+          <div class="pq-visual">
+            <div class="pq-paired">
+              <div class="pq-pie-wrap"><div class="pq-pie-label">2000</div><div class="pq-pie-chart"><canvas id="prac-pie-3a"></canvas></div></div>
+              <div class="pq-pie-wrap"><div class="pq-pie-label">2020</div><div class="pq-pie-chart"><canvas id="prac-pie-3b"></canvas></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /pie-practice -->
     </section>
 
     <!-- ═══════ TABLE ═══════ -->
@@ -1749,6 +1958,7 @@
         <button class="tab-btn active" onclick="showSubTab('table','vocab')">Vocabulary</button>
         <button class="tab-btn" onclick="showSubTab('table','strategy')">Strategy</button>
         <button class="tab-btn" onclick="showSubTab('table','sample')">Band 8 Answer</button>
+        <button class="tab-btn" onclick="showSubTab('table','practice')">Practice</button>
       </div>
 
       <div class="sub-tab-content active" id="table-vocab">
@@ -1938,6 +2148,72 @@
           </div>
         </div>
       </div>
+
+      <!-- TABLE PRACTICE -->
+      <div class="sub-tab-content" id="table-practice">
+
+        <div class="practice-q">
+          <div class="pq-header">
+            <div class="pq-num">01</div>
+            <div><div class="pq-title">Tourism Statistics by Country</div><div class="pq-type">Table · 20 min · 150+ words</div></div>
+          </div>
+          <div class="pq-prompt">The table below shows tourism data for five countries in 2019. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div>
+          <div class="pq-visual">
+            <table class="pq-table">
+              <thead><tr><th>Country</th><th>Arrivals (M)</th><th>Revenue ($bn)</th><th>Avg. stay (days)</th><th>Jobs supported (M)</th></tr></thead>
+              <tbody>
+                <tr><td>France</td><td>89.4</td><td>63.8</td><td>6.2</td><td>3.1</td></tr>
+                <tr><td>Spain</td><td>83.7</td><td>79.7</td><td>9.1</td><td>2.7</td></tr>
+                <tr><td>USA</td><td>79.3</td><td>193.3</td><td>17.8</td><td>8.6</td></tr>
+                <tr><td>China</td><td>65.7</td><td>35.8</td><td>7.4</td><td>4.2</td></tr>
+                <tr><td>Italy</td><td>64.5</td><td>49.6</td><td>8.3</td><td>1.9</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="practice-q">
+          <div class="pq-header">
+            <div class="pq-num">02</div>
+            <div><div class="pq-title">Graduate Employment by Subject</div><div class="pq-type">Table · 20 min · 150+ words</div></div>
+          </div>
+          <div class="pq-prompt">The table shows the percentage of graduates in employment 6 months after graduation, by subject, across four universities in 2021. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div>
+          <div class="pq-visual">
+            <table class="pq-table">
+              <thead><tr><th>Subject</th><th>University A</th><th>University B</th><th>University C</th><th>University D</th></tr></thead>
+              <tbody>
+                <tr><td>Medicine</td><td>98%</td><td>97%</td><td>99%</td><td>96%</td></tr>
+                <tr><td>Engineering</td><td>87%</td><td>82%</td><td>91%</td><td>78%</td></tr>
+                <tr><td>Business</td><td>74%</td><td>79%</td><td>68%</td><td>81%</td></tr>
+                <tr><td>Arts</td><td>52%</td><td>47%</td><td>61%</td><td>44%</td></tr>
+                <tr><td>Humanities</td><td>43%</td><td>51%</td><td>38%</td><td>49%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="practice-q">
+          <div class="pq-header">
+            <div class="pq-num">03</div>
+            <div><div class="pq-title">Major City Statistics</div><div class="pq-type">Table · 20 min · 150+ words</div></div>
+          </div>
+          <div class="pq-prompt">The table gives information about six major cities in 2020, including population, area, GDP per capita, and average commute time. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div>
+          <div class="pq-visual">
+            <table class="pq-table">
+              <thead><tr><th>City</th><th>Population (M)</th><th>Area (km²)</th><th>GDP/capita ($)</th><th>Avg. commute (min)</th></tr></thead>
+              <tbody>
+                <tr><td>Tokyo</td><td>13.9</td><td>2,194</td><td>51,400</td><td>48</td></tr>
+                <tr><td>Lagos</td><td>14.8</td><td>1,171</td><td>2,800</td><td>61</td></tr>
+                <tr><td>London</td><td>8.9</td><td>1,572</td><td>68,100</td><td>37</td></tr>
+                <tr><td>São Paulo</td><td>12.3</td><td>1,521</td><td>11,600</td><td>54</td></tr>
+                <tr><td>Sydney</td><td>5.3</td><td>12,368</td><td>57,200</td><td>32</td></tr>
+                <tr><td>Cairo</td><td>10.1</td><td>606</td><td>3,900</td><td>43</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div><!-- /table-practice -->
     </section>
 
     <!-- ═══════ MAP ═══════ -->
@@ -1952,6 +2228,7 @@
         <button class="tab-btn active" onclick="showSubTab('map','vocab')">Vocabulary</button>
         <button class="tab-btn" onclick="showSubTab('map','strategy')">Strategy</button>
         <button class="tab-btn" onclick="showSubTab('map','sample')">Band 8 Answer</button>
+        <button class="tab-btn" onclick="showSubTab('map','practice')">Practice</button>
       </div>
 
       <div class="sub-tab-content active" id="map-vocab">
@@ -2166,6 +2443,71 @@
           </div>
         </div>
       </div>
+
+      <!-- MAP PRACTICE -->
+      <div class="sub-tab-content" id="map-practice">
+
+        <div class="practice-q">
+          <div class="pq-header">
+            <div class="pq-num">01</div>
+            <div><div class="pq-title">Redevelopment of Harwick</div><div class="pq-type">Map · 20 min · 150+ words</div></div>
+          </div>
+          <div class="pq-prompt">The maps below show the town of Harwick in 1990 and 2020. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div>
+          <div class="pq-visual">
+            <div class="pq-map">
+              <div class="pq-map-panel">
+                <div class="pq-map-era">1990</div>
+                <div class="pq-map-items">• Fishing harbour on the coast<br>• Small market in the town centre<br>• Terraced housing along the seafront<br>• Single road in and out of town<br>• Farmland to the north</div>
+              </div>
+              <div class="pq-map-panel">
+                <div class="pq-map-era">2020</div>
+                <div class="pq-map-items">• Harbour converted to a marina with restaurants<br>• Large shopping centre replaced the market<br>• Hotel built on the seafront<br>• Bypass road added around the town<br>• Housing estate built on former farmland<br>• Car park near the beach</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="practice-q">
+          <div class="pq-header">
+            <div class="pq-num">02</div>
+            <div><div class="pq-title">Island Tourist Resort Development</div><div class="pq-type">Map · 20 min · 150+ words</div></div>
+          </div>
+          <div class="pq-prompt">The diagrams show an uninhabited island and a proposal for its development as a tourist resort. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div>
+          <div class="pq-visual">
+            <div class="pq-map">
+              <div class="pq-map-panel">
+                <div class="pq-map-era">Current (uninhabited)</div>
+                <div class="pq-map-items">• Dense forest covering the centre<br>• Coral reef along the east coast<br>• Sandy beaches on the west and south<br>• Freshwater lake in the north</div>
+              </div>
+              <div class="pq-map-panel">
+                <div class="pq-map-era">Proposed development</div>
+                <div class="pq-map-items">• Resort hotel on the west beach<br>• Water sports centre on the south beach<br>• Walking trails through the forest<br>• Visitor centre near the lake<br>• Pier and ferry terminal on the north coast<br>• Coral reef designated as protected zone</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="practice-q">
+          <div class="pq-header">
+            <div class="pq-num">03</div>
+            <div><div class="pq-title">Greenfield University Campus</div><div class="pq-type">Map · 20 min · 150+ words</div></div>
+          </div>
+          <div class="pq-prompt">The maps illustrate changes to Greenfield University campus between 2000 and 2024. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div>
+          <div class="pq-visual">
+            <div class="pq-map">
+              <div class="pq-map-panel">
+                <div class="pq-map-era">2000</div>
+                <div class="pq-map-items">• Single main teaching building<br>• Small library<br>• Student union<br>• Large open playing fields<br>• Car park at the entrance</div>
+              </div>
+              <div class="pq-map-panel">
+                <div class="pq-map-era">2024</div>
+                <div class="pq-map-items">• Main building extended<br>• New science block added<br>• Library doubled in size<br>• Student union relocated<br>• Playing fields reduced — replaced by two halls of residence and a sports centre<br>• Car park expanded; cycle path added</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /map-practice -->
     </section>
 
     <!-- ═══════ PROCESS ═══════ -->
@@ -2180,6 +2522,7 @@
         <button class="tab-btn active" onclick="showSubTab('process','vocab')">Vocabulary</button>
         <button class="tab-btn" onclick="showSubTab('process','strategy')">Strategy</button>
         <button class="tab-btn" onclick="showSubTab('process','sample')">Band 8 Answer</button>
+        <button class="tab-btn" onclick="showSubTab('process','practice')">Practice</button>
       </div>
 
       <div class="sub-tab-content active" id="process-vocab">
@@ -2383,6 +2726,79 @@
           </div>
         </div>
       </div>
+
+      <!-- PROCESS PRACTICE -->
+      <div class="sub-tab-content" id="process-practice">
+
+        <div class="practice-q">
+          <div class="pq-header">
+            <div class="pq-num">01</div>
+            <div><div class="pq-title">Paper Recycling Process</div><div class="pq-type">Process Diagram · 20 min · 150+ words</div></div>
+          </div>
+          <div class="pq-prompt">The diagram below illustrates the process by which used paper is collected and recycled into new paper products. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div>
+          <div class="pq-visual">
+            <div class="pq-process">
+              <div class="pq-step">Collection from homes &amp; offices</div><div class="pq-arrow">→</div>
+              <div class="pq-step">Sorting by type</div><div class="pq-arrow">→</div>
+              <div class="pq-step">Pulping with water &amp; chemicals</div><div class="pq-arrow">→</div>
+              <div class="pq-step">Screening (remove staples, tape)</div><div class="pq-arrow">→</div>
+              <div class="pq-step">Cleaning &amp; de-inking</div><div class="pq-arrow">→</div>
+              <div class="pq-step">Bleaching</div><div class="pq-arrow">→</div>
+              <div class="pq-step">Sheet formation on rollers</div><div class="pq-arrow">→</div>
+              <div class="pq-step">Drying</div><div class="pq-arrow">→</div>
+              <div class="pq-step">Cutting &amp; packaging</div><div class="pq-arrow">→</div>
+              <div class="pq-step">Distribution to manufacturers</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="practice-q">
+          <div class="pq-header">
+            <div class="pq-num">02</div>
+            <div><div class="pq-title">Life Cycle of the Atlantic Salmon</div><div class="pq-type">Process Diagram · 20 min · 150+ words</div></div>
+          </div>
+          <div class="pq-prompt">The diagram shows the life cycle of the Atlantic salmon. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div>
+          <div class="pq-visual">
+            <div class="pq-process">
+              <div class="pq-step">Eggs laid in gravel riverbed (autumn)</div><div class="pq-arrow">→</div>
+              <div class="pq-step">Alevin hatches, feeds on yolk sac</div><div class="pq-arrow">→</div>
+              <div class="pq-step">Fry emerges, feeds on river insects</div><div class="pq-arrow">→</div>
+              <div class="pq-step">Parr develops in river (1–3 years)</div><div class="pq-arrow">→</div>
+              <div class="pq-step">Smolt migrates downstream to sea</div><div class="pq-arrow">→</div>
+              <div class="pq-step">Adult feeds &amp; grows in ocean (1–4 yrs)</div><div class="pq-arrow">→</div>
+              <div class="pq-step">Returns to birth river to spawn</div><div class="pq-arrow">→</div>
+              <div class="pq-step">Female lays 2,000–10,000 eggs</div><div class="pq-arrow">→</div>
+              <div class="pq-step">Most adults die after spawning</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="practice-q">
+          <div class="pq-header">
+            <div class="pq-num">03</div>
+            <div><div class="pq-title">Cement &amp; Concrete Production</div><div class="pq-type">Process Diagram · 20 min · 150+ words</div></div>
+          </div>
+          <div class="pq-prompt">The diagram below shows the stages involved in the manufacture of cement and its subsequent use in producing concrete. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div>
+          <div class="pq-visual">
+            <div style="margin-bottom:10px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--accent);">Cement</div>
+            <div class="pq-process" style="margin-bottom:14px;">
+              <div class="pq-step">Limestone + clay crushed</div><div class="pq-arrow">→</div>
+              <div class="pq-step">Mixed in correct proportions</div><div class="pq-arrow">→</div>
+              <div class="pq-step">Heated in rotating kiln (1,450°C)</div><div class="pq-arrow">→</div>
+              <div class="pq-step">Clinker produced</div><div class="pq-arrow">→</div>
+              <div class="pq-step">Ground with gypsum</div><div class="pq-arrow">→</div>
+              <div class="pq-step">Cement powder</div>
+            </div>
+            <div style="margin-bottom:10px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--accent2);">Concrete</div>
+            <div class="pq-process">
+              <div class="pq-step">Cement 15% + Sand 25% + Gravel 50% + Water 10%</div><div class="pq-arrow">→</div>
+              <div class="pq-step">Mixed in concrete mixer</div><div class="pq-arrow">→</div>
+              <div class="pq-step">Concrete ready for use</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /process-practice -->
     </section>
 
   </div>
@@ -2475,6 +2891,71 @@ function initStratCharts() {
   }
 }
 
+const pracCharts = {};
+
+function initPracCharts(section) {
+  if (section === 'line') {
+    if (!pracCharts.line1) {
+      const c1 = document.getElementById('prac-line-1');
+      if (c1) pracCharts.line1 = new Chart(c1, { type:'line', data:{ labels:['2010','2012','2014','2016','2018','2020'], datasets:[
+        { label:'Japan',      data:[8.6,10.1,13.4,24.0,31.2,4.1],  borderColor:'#C4622D', borderWidth:2.5, pointRadius:3, pointBackgroundColor:'#C4622D', tension:0.35, fill:false },
+        { label:'Thailand',   data:[15.9,22.3,24.8,32.6,38.3,6.7], borderColor:'#2D6B8C', borderWidth:2.5, borderDash:[6,3], pointRadius:3, pointBackgroundColor:'#2D6B8C', pointStyle:'rectRot', tension:0.35, fill:false },
+        { label:'S. Korea',   data:[8.8,11.1,14.2,17.2,15.3,2.5],  borderColor:'#3D7A52', borderWidth:2.5, pointRadius:3, pointBackgroundColor:'#3D7A52', pointStyle:'triangle', tension:0.35, fill:false }
+      ]}, options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}, tooltip:{callbacks:{label:c=>' '+c.dataset.label+': '+c.parsed.y.toFixed(1)+'M'}} }, scales:{ x:{grid:{color:'rgba(0,0,0,0.05)'},ticks:{font:{size:10},color:'#9C9489'}}, y:{min:0,grid:{color:'rgba(0,0,0,0.05)'},ticks:{font:{size:10},color:'#9C9489',callback:v=>v+'M'}} } } });
+    }
+    if (!pracCharts.line2) {
+      const c2 = document.getElementById('prac-line-2');
+      if (c2) pracCharts.line2 = new Chart(c2, { type:'line', data:{ labels:['2005','2008','2011','2014','2017','2020'], datasets:[
+        { label:'Germany', data:[42,60,72,81,88,93], borderColor:'#C4622D', borderWidth:2.5, pointRadius:3, pointBackgroundColor:'#C4622D', tension:0.35, fill:false },
+        { label:'Brazil',  data:[8,16,28,42,55,67],  borderColor:'#2D6B8C', borderWidth:2.5, borderDash:[6,3], pointRadius:3, pointBackgroundColor:'#2D6B8C', pointStyle:'rectRot', tension:0.35, fill:false },
+        { label:'Nigeria', data:[1,3,7,12,18,25],    borderColor:'#3D7A52', borderWidth:2.5, pointRadius:3, pointBackgroundColor:'#3D7A52', pointStyle:'triangle', tension:0.35, fill:false },
+        { label:'India',   data:[1,3,7,14,28,43],    borderColor:'#B8942A', borderWidth:2.5, borderDash:[3,3], pointRadius:3, pointBackgroundColor:'#B8942A', tension:0.35, fill:false }
+      ]}, options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}, tooltip:{callbacks:{label:c=>' '+c.dataset.label+': '+c.parsed.y+'%'}} }, scales:{ x:{grid:{color:'rgba(0,0,0,0.05)'},ticks:{font:{size:10},color:'#9C9489'}}, y:{min:0,max:100,grid:{color:'rgba(0,0,0,0.05)'},ticks:{font:{size:10},color:'#9C9489',callback:v=>v+'%'}} } } });
+    }
+    if (!pracCharts.line3) {
+      const c3 = document.getElementById('prac-line-3');
+      if (c3) pracCharts.line3 = new Chart(c3, { type:'line', data:{ labels:['2000','2005','2010','2015','2020'], datasets:[
+        { label:'USA',   data:[20.1,19.6,17.4,16.1,14.2], borderColor:'#C4622D', borderWidth:2.5, pointRadius:3, pointBackgroundColor:'#C4622D', tension:0.35, fill:false },
+        { label:'China', data:[2.7,4.4,6.6,7.7,7.4],      borderColor:'#2D6B8C', borderWidth:2.5, borderDash:[6,3], pointRadius:3, pointBackgroundColor:'#2D6B8C', pointStyle:'rectRot', tension:0.35, fill:false },
+        { label:'UK',    data:[9.2,8.7,7.4,6.1,4.8],      borderColor:'#3D7A52', borderWidth:2.5, pointRadius:3, pointBackgroundColor:'#3D7A52', pointStyle:'triangle', tension:0.35, fill:false },
+        { label:'India', data:[1.1,1.3,1.5,1.8,1.9],      borderColor:'#B8942A', borderWidth:2.5, borderDash:[3,3], pointRadius:3, pointBackgroundColor:'#B8942A', tension:0.35, fill:false }
+      ]}, options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}, tooltip:{callbacks:{label:c=>' '+c.dataset.label+': '+c.parsed.y+' t'}} }, scales:{ x:{grid:{color:'rgba(0,0,0,0.05)'},ticks:{font:{size:10},color:'#9C9489'}}, y:{min:0,grid:{color:'rgba(0,0,0,0.05)'},ticks:{font:{size:10},color:'#9C9489',callback:v=>v+'t'}} } } });
+    }
+  }
+
+  if (section === 'bar') {
+    if (!pracCharts.bar1) {
+      const c1 = document.getElementById('prac-bar-1');
+      if (c1) pracCharts.bar1 = new Chart(c1, { type:'bar', data:{ labels:['South Korea','Japan','USA','Australia','Germany','France'], datasets:[{ label:'Hours/week', data:[41.5,38.7,36.4,34.1,31.6,30.2], backgroundColor:['#C4622D','#2D6B8C','#3D7A52','#B8942A','#7A4A8C','#4A7A6B'], borderRadius:4, borderSkipped:false }] }, options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}, tooltip:{callbacks:{label:c=>' '+c.parsed.y+' hrs'}} }, scales:{ x:{grid:{display:false},ticks:{font:{size:10},color:'#9C9489'}}, y:{min:25,max:45,grid:{color:'rgba(0,0,0,0.05)'},ticks:{font:{size:10},color:'#9C9489',callback:v=>v+'h'}} } } });
+    }
+    if (!pracCharts.bar2) {
+      const c2 = document.getElementById('prac-bar-2');
+      if (c2) pracCharts.bar2 = new Chart(c2, { type:'bar', data:{ labels:['Social media','Exercise','Reading','Gardening'], datasets:[
+        { label:'18–34', data:[88,71,38,9],  backgroundColor:'#C4622D', borderRadius:3 },
+        { label:'35–54', data:[62,54,51,27], backgroundColor:'#2D6B8C', borderRadius:3 },
+        { label:'55+',   data:[31,48,67,58], backgroundColor:'#3D7A52', borderRadius:3 }
+      ]}, options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}, tooltip:{callbacks:{label:c=>' '+c.dataset.label+': '+c.parsed.y+'%'}} }, scales:{ x:{grid:{display:false},ticks:{font:{size:10},color:'#9C9489'}}, y:{min:0,max:100,grid:{color:'rgba(0,0,0,0.05)'},ticks:{font:{size:10},color:'#9C9489',callback:v=>v+'%'}} } } });
+    }
+    if (!pracCharts.bar3) {
+      const c3 = document.getElementById('prac-bar-3');
+      if (c3) pracCharts.bar3 = new Chart(c3, { type:'bar', data:{ labels:['China','USA','Germany','UK','Norway'], datasets:[
+        { label:'2018', data:[1256,361,68,59,72],   backgroundColor:'#C4622D', borderRadius:3 },
+        { label:'2023', data:[6880,1140,524,315,198],backgroundColor:'#2D6B8C', borderRadius:3 }
+      ]}, options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}, tooltip:{callbacks:{label:c=>' '+c.dataset.label+': '+c.parsed.y.toLocaleString()+'k'}} }, scales:{ x:{grid:{display:false},ticks:{font:{size:10},color:'#9C9489'}}, y:{grid:{color:'rgba(0,0,0,0.05)'},ticks:{font:{size:10},color:'#9C9489',callback:v=>v+'k'}} } } });
+    }
+  }
+
+  if (section === 'pie') {
+    const pieOpts = (labels, data, colors) => ({ type:'doughnut', data:{ labels, datasets:[{ data, backgroundColor:colors, borderWidth:1, borderColor:'#fff' }] }, options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{ display:true, position:'bottom', labels:{ font:{size:9}, boxWidth:10, padding:6, color:'#5C5649' } }, tooltip:{callbacks:{label:c=>' '+c.label+': '+c.parsed+'%'}} } } });
+    if (!pracCharts.pie1a) { const el=document.getElementById('prac-pie-1a'); if(el) pracCharts.pie1a=new Chart(el,pieOpts(['Nuclear','Hydro','Gas','Wind','Solar','Other'],[71,11,7,6,3,2],['#C4622D','#2D6B8C','#3D7A52','#B8942A','#7A4A8C','#9C9489'])); }
+    if (!pracCharts.pie1b) { const el=document.getElementById('prac-pie-1b'); if(el) pracCharts.pie1b=new Chart(el,pieOpts(['Coal','Gas','Wind','Hydro','Solar','Other'],[54,20,10,6,8,2],['#C4622D','#2D6B8C','#3D7A52','#B8942A','#7A4A8C','#9C9489'])); }
+    if (!pracCharts.pie2a) { const el=document.getElementById('prac-pie-2a'); if(el) pracCharts.pie2a=new Chart(el,pieOpts(['Agriculture','Logging','Infrastructure','Urbanisation','Other'],[73,11,8,5,3],['#C4622D','#2D6B8C','#3D7A52','#B8942A','#9C9489'])); }
+    if (!pracCharts.pie2b) { const el=document.getElementById('prac-pie-2b'); if(el) pracCharts.pie2b=new Chart(el,pieOpts(['Cattle ranching','Soy farming','Logging','Fire','Other'],[65,14,9,7,5],['#C4622D','#2D6B8C','#3D7A52','#B8942A','#9C9489'])); }
+    if (!pracCharts.pie3a) { const el=document.getElementById('prac-pie-3a'); if(el) pracCharts.pie3a=new Chart(el,pieOpts(['Food waste','Paper','Plastic','Glass','Metal','Other'],[38,23,14,10,8,7],['#C4622D','#2D6B8C','#3D7A52','#B8942A','#7A4A8C','#9C9489'])); }
+    if (!pracCharts.pie3b) { const el=document.getElementById('prac-pie-3b'); if(el) pracCharts.pie3b=new Chart(el,pieOpts(['Food waste','Plastic','Paper','Garden','Glass','Metal','Other'],[29,22,16,14,8,5,6],['#C4622D','#2D6B8C','#3D7A52','#B8942A','#7A4A8C','#4A7A6B','#9C9489'])); }
+  }
+}
+
 function togglePart(partId) {
   const body   = document.getElementById('part-body-' + partId);
   const header = document.querySelector('#part-' + partId + ' .part-header');
@@ -2527,6 +3008,7 @@ function showSubTab(section, tab) {
     if (section === 'line') { initLineChart(); if (tab === 'strategy') initStratCharts(); }
     if (section === 'bar')  { initBarChart();  if (tab === 'strategy') initStratCharts(); }
     if (section === 'pie')  { initPieChart(); }
+    if (tab === 'practice') initPracCharts(section);
   }, 50);
 }
 </script>
