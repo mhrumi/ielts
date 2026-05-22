@@ -830,6 +830,39 @@
   .pq-legend-item { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--ink2); }
   .pq-legend-dot { width: 9px; height: 9px; border-radius: 2px; flex-shrink: 0; }
 
+  /* ── TASK 2 ESSAY TYPES ── */
+  .t2-type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .t2-type-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 14px 16px; cursor: pointer; transition: all 0.15s; }
+  .t2-type-card:hover { border-color: var(--accent); background: rgba(196,98,45,0.04); }
+  .t2-type-top { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .t2-type-icon { font-size: 18px; }
+  .t2-type-name { font-size: 13.5px; font-weight: 600; color: var(--ink); flex: 1; }
+  .t2-freq { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 20px; letter-spacing: 0.05em; flex-shrink: 0; }
+  .t2-freq.high   { background: rgba(196,98,45,0.12); color: var(--accent); }
+  .t2-freq.med    { background: rgba(45,107,140,0.12); color: var(--accent2); }
+  .t2-freq.low    { background: rgba(61,122,82,0.12);  color: var(--accent3); }
+  .t2-type-signal { font-family: 'DM Mono', monospace; font-size: 11.5px; color: var(--ink3); }
+
+  /* Essay structure */
+  .essay-struct { display: flex; flex-direction: column; gap: 8px; }
+  .es-para { display: flex; gap: 14px; align-items: stretch; }
+  .es-bar { width: 4px; border-radius: 2px; flex-shrink: 0; min-height: 60px; }
+  .es-body { flex: 1; background: var(--bg); border-radius: var(--r-sm); padding: 13px 16px; border: 1px solid var(--border); }
+  .es-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 3px; }
+  .es-title { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+  .es-time  { display: inline-block; font-size: 10px; padding: 1px 7px; border-radius: 20px; background: rgba(0,0,0,0.06); color: var(--ink3); margin-bottom: 6px; }
+  .es-desc  { font-size: 13px; color: var(--ink2); line-height: 1.6; }
+  .es-tips  { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 5px; }
+  .es-tip   { font-size: 11px; padding: 3px 9px; border-radius: 20px; background: rgba(255,255,255,0.8); border: 1px solid var(--border); color: var(--ink2); font-family: 'DM Mono', monospace; }
+
+  /* Avoid / use table (Task 2) */
+  .avoid-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .avoid-table th { background: var(--ink); color: rgba(255,255,255,0.75); padding: 8px 14px; text-align: left; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; }
+  .avoid-table td { padding: 8px 14px; border-bottom: 1px solid var(--border2); color: var(--ink2); }
+  .avoid-table tr:last-child td { border-bottom: none; }
+  .avoid-table .bad  { color: #A32D2D; text-decoration: line-through; font-family: 'DM Mono', monospace; font-size: 12px; }
+  .avoid-table .good { color: #0F6E56; font-family: 'DM Mono', monospace; font-size: 12px; }
+
   /* ── SCROLLBAR ── */
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: transparent; }
@@ -1009,10 +1042,31 @@
       </div>
 
       <!-- Task 2 -->
-      <div class="task-group">
-        <div class="task-header task-header-soon">
+      <div class="task-group" id="taskgroup-t2">
+        <div class="task-header" onclick="toggleTaskGroup('t2')">
           <span class="task-label">Task 2</span>
-          <span class="soon-badge">Soon</span>
+          <span class="task-tag">Active</span>
+          <span class="task-chevron">›</span>
+        </div>
+        <div class="task-body">
+          <button class="nav-item indent" onclick="showSection('t2-overview')">
+            <span class="nav-icon">🏠</span> Overview
+          </button>
+          <button class="nav-item indent" onclick="showSection('t2-opinion')">
+            <span class="nav-icon">💬</span> Opinion Essay
+          </button>
+          <button class="nav-item indent" onclick="showSection('t2-discussion')">
+            <span class="nav-icon">⚖️</span> Discussion Essay
+          </button>
+          <button class="nav-item indent" onclick="showSection('t2-problem')">
+            <span class="nav-icon">🔧</span> Problem &amp; Solution
+          </button>
+          <button class="nav-item indent" onclick="showSection('t2-advantages')">
+            <span class="nav-icon">📊</span> Adv &amp; Disadv
+          </button>
+          <button class="nav-item indent" onclick="showSection('t2-twopart')">
+            <span class="nav-icon">❓</span> Two-part Question
+          </button>
         </div>
       </div>
 
@@ -2851,6 +2905,1207 @@
       </div><!-- /process-practice -->
     </section>
 
+    <!-- ═══════ TASK 2 OVERVIEW ═══════ -->
+    <section class="section" id="section-t2-overview">
+      <div class="hero-band" style="background:linear-gradient(135deg,#1A1714 0%,#2A2420 100%);">
+        <div class="hero-tag" style="background:var(--accent2);">Writing Task 2</div>
+        <h1>Essay Writing</h1>
+        <p>Write a formal academic essay of at least 250 words in response to a point of view, argument, or problem. Worth double the marks of Task 1.</p>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="hero-stat-val">250+</div><div class="hero-stat-label">words required</div></div>
+          <div class="hero-stat"><div class="hero-stat-val">40</div><div class="hero-stat-label">minutes</div></div>
+          <div class="hero-stat"><div class="hero-stat-val">2×</div><div class="hero-stat-label">marks vs Task 1</div></div>
+          <div class="hero-stat"><div class="hero-stat-val">25%</div><div class="hero-stat-label">per criterion</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Four scoring criteria</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div style="padding:14px 16px;background:var(--bg);border-radius:var(--r-sm);border:1px solid var(--border);">
+            <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;">Task Response</div>
+            <div style="font-size:13px;color:var(--ink2);">Address all parts of the question, develop a clear position, support with relevant ideas</div>
+          </div>
+          <div style="padding:14px 16px;background:var(--bg);border-radius:var(--r-sm);border:1px solid var(--border);">
+            <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent2);margin-bottom:4px;">Coherence &amp; Cohesion</div>
+            <div style="font-size:13px;color:var(--ink2);">Logical paragraphing, clear progression, effective linking devices</div>
+          </div>
+          <div style="padding:14px 16px;background:var(--bg);border-radius:var(--r-sm);border:1px solid var(--border);">
+            <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent3);margin-bottom:4px;">Lexical Resource</div>
+            <div style="font-size:13px;color:var(--ink2);">Wide, precise vocabulary, collocations, academic register</div>
+          </div>
+          <div style="padding:14px 16px;background:var(--bg);border-radius:var(--r-sm);border:1px solid var(--border);">
+            <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Grammatical Range</div>
+            <div style="font-size:13px;color:var(--ink2);">Complex structures, variety of forms, high accuracy</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">5 Essay Types</div>
+        <div class="t2-type-grid">
+          <div class="t2-type-card" onclick="goT2('t2-opinion')">
+            <div class="t2-type-top"><span class="t2-type-icon">💬</span><span class="t2-type-name">Opinion</span><span class="t2-freq high">Very Common</span></div>
+            <div class="t2-type-signal">"To what extent do you agree or disagree?"</div>
+          </div>
+          <div class="t2-type-card" onclick="goT2('t2-discussion')">
+            <div class="t2-type-top"><span class="t2-type-icon">⚖️</span><span class="t2-type-name">Discussion</span><span class="t2-freq high">Very Common</span></div>
+            <div class="t2-type-signal">"Discuss both views and give your opinion"</div>
+          </div>
+          <div class="t2-type-card" onclick="goT2('t2-problem')">
+            <div class="t2-type-top"><span class="t2-type-icon">🔧</span><span class="t2-type-name">Problem &amp; Solution</span><span class="t2-freq med">Common</span></div>
+            <div class="t2-type-signal">"What are the causes and what can be done?"</div>
+          </div>
+          <div class="t2-type-card" onclick="goT2('t2-advantages')">
+            <div class="t2-type-top"><span class="t2-type-icon">📊</span><span class="t2-type-name">Adv &amp; Disadv</span><span class="t2-freq med">Common</span></div>
+            <div class="t2-type-signal">"What are the advantages and disadvantages?"</div>
+          </div>
+          <div class="t2-type-card" onclick="goT2('t2-twopart')">
+            <div class="t2-type-top"><span class="t2-type-icon">❓</span><span class="t2-type-name">Two-part Question</span><span class="t2-freq low">Less Common</span></div>
+            <div class="t2-type-signal">"Why is this? What do you think should be done?"</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Universal time plan — 40 minutes</div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-left"><div class="step-num">1</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Analyse &amp; plan</div>
+              <div class="step-time">5 min</div>
+              <div class="step-desc">Identify the essay type. Underline key words. Decide your position. Brainstorm 2–3 ideas per body paragraph. Sketch a brief outline.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-left"><div class="step-num">2</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Write introduction</div>
+              <div class="step-time">5 min · ~50 words</div>
+              <div class="step-desc">Paraphrase the topic (change vocabulary and structure). State your position or outline the essay's approach. Never copy the question.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-left"><div class="step-num">3</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Write body paragraphs (×2)</div>
+              <div class="step-time">22 min · ~80 words each</div>
+              <div class="step-desc">Each paragraph: topic sentence → explain → example/evidence → mini-conclusion. One main idea per paragraph. Use cohesive devices.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-left"><div class="step-num">4</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Write conclusion</div>
+              <div class="step-time">5 min · ~40 words</div>
+              <div class="step-desc">Paraphrase your introduction. Restate position or summary. Never introduce new ideas. Start with "In conclusion," or "To conclude,".</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-left"><div class="step-num">5</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Check &amp; proofread</div>
+              <div class="step-time">3 min</div>
+              <div class="step-desc">Count words (must be 250+). Fix spelling errors. Check subject-verb agreement. Verify paragraphing is clear.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="key-point">
+        <div class="key-point-icon">!</div>
+        Always address every part of the question. Partial answers are the #1 reason candidates lose marks on Task Response. If asked for your opinion, give one — vague "on the one hand / on the other hand" endings without a clear stance score lower.
+      </div>
+    </section>
+
+    <!-- ═══════ TASK 2 — OPINION ESSAY ═══════ -->
+    <section class="section" id="section-t2-opinion">
+      <div class="hero-band">
+        <div class="hero-tag" style="background:var(--accent2);">Essay Type 1</div>
+        <h1>Opinion Essay</h1>
+        <p>State and defend a clear position. The examiner wants one coherent argument, not a balanced discussion.</p>
+      </div>
+
+      <div class="tab-row">
+        <button class="tab-btn active" onclick="showSubTab('t2-opinion','vocab')">Vocabulary</button>
+        <button class="tab-btn" onclick="showSubTab('t2-opinion','structure')">Structure</button>
+        <button class="tab-btn" onclick="showSubTab('t2-opinion','sample')">Band 8 Answer</button>
+        <button class="tab-btn" onclick="showSubTab('t2-opinion','practice')">Practice</button>
+      </div>
+
+      <!-- VOCAB -->
+      <div class="sub-tab-content active" id="t2-opinion-vocab">
+        <div class="card">
+          <div class="card-title">Stating your opinion <span class="card-title-badge" style="background:rgba(196,98,45,0.1);color:var(--accent);">Thesis</span></div>
+          <div class="vocab-grid">
+            <span class="chip accent" data-meaning="to believe strongly" data-ex="I firmly believe that education should be free for all.">I firmly believe</span>
+            <span class="chip accent" data-meaning="in my personal view" data-ex="In my view, the benefits clearly outweigh the costs.">In my view</span>
+            <span class="chip accent" data-meaning="from my perspective" data-ex="From my perspective, this policy is fundamentally flawed.">From my perspective</span>
+            <span class="chip accent" data-meaning="I would argue that" data-ex="I would argue that government intervention is essential.">I would argue that</span>
+            <span class="chip accent" data-meaning="I am convinced that" data-ex="I am convinced that renewable energy is the only viable solution.">I am convinced that</span>
+            <span class="chip" data-meaning="it is my contention that" data-ex="It is my contention that social media does more harm than good.">It is my contention that</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Acknowledging the counter-argument <span class="card-title-badge" style="background:rgba(45,107,140,0.1);color:var(--accent2);">Concession</span></div>
+          <div class="vocab-grid">
+            <span class="chip blue" data-meaning="it is true that (but...)" data-ex="While it is true that cars are convenient, they cause significant pollution.">While it is true that</span>
+            <span class="chip blue" data-meaning="although some may argue" data-ex="Although some may argue that CCTV invades privacy, it undeniably deters crime.">Although some may argue</span>
+            <span class="chip blue" data-meaning="admittedly" data-ex="Admittedly, there are short-term economic costs to transitioning to renewables.">Admittedly</span>
+            <span class="chip blue" data-meaning="one could argue that" data-ex="One could argue that stricter laws restrict personal freedom.">One could argue that</span>
+            <span class="chip blue" data-meaning="despite this" data-ex="Despite this, the long-term benefits are undeniable.">Despite this</span>
+            <span class="chip blue" data-meaning="even so" data-ex="Even so, I maintain that the policy is necessary.">Even so</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Developing arguments <span class="card-title-badge" style="background:rgba(61,122,82,0.1);color:var(--accent3);">Body</span></div>
+          <div class="vocab-grid">
+            <span class="chip green" data-meaning="the primary reason is" data-ex="The primary reason for this is the lack of government investment in public transport.">The primary reason</span>
+            <span class="chip green" data-meaning="this can be attributed to" data-ex="This can be attributed to the widespread availability of fast food.">This can be attributed to</span>
+            <span class="chip green" data-meaning="a compelling argument for X is" data-ex="A compelling argument for stricter regulation is the proven harm caused by misinformation.">A compelling argument</span>
+            <span class="chip green" data-meaning="to illustrate this point" data-ex="To illustrate, Finland's education system demonstrates that free tuition improves social mobility.">To illustrate</span>
+            <span class="chip green" data-meaning="this demonstrates that" data-ex="This demonstrates that early intervention significantly reduces long-term costs.">This demonstrates that</span>
+            <span class="chip green" data-meaning="furthermore / in addition" data-ex="Furthermore, digital literacy has become an essential workplace skill.">Furthermore</span>
+            <span class="chip" data-meaning="as a result of this" data-ex="As a consequence, thousands of species face extinction.">As a consequence</span>
+            <span class="chip" data-meaning="it follows that" data-ex="It follows that investing in education yields long-term economic benefits.">It follows that</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Conclusion phrases <span class="card-title-badge" style="background:rgba(184,148,42,0.1);color:var(--gold);">Conclusion</span></div>
+          <div class="vocab-grid">
+            <span class="chip gold" data-meaning="in conclusion" data-ex="In conclusion, I maintain that the benefits of globalisation far outweigh its drawbacks.">In conclusion</span>
+            <span class="chip gold" data-meaning="to summarise" data-ex="To summarise, government regulation is both necessary and justified.">To summarise</span>
+            <span class="chip gold" data-meaning="it is clear that" data-ex="It is clear that radical action is required to combat climate change.">It is clear that</span>
+            <span class="chip gold" data-meaning="I maintain that / I continue to believe" data-ex="I maintain that a balanced approach serves society best.">I maintain that</span>
+            <span class="chip gold" data-meaning="only by doing X can we achieve Y" data-ex="Only by overhauling education policy can we hope to address skills shortages.">Only by… can we</span>
+          </div>
+        </div>
+      </div><!-- /t2-opinion-vocab -->
+
+      <!-- STRUCTURE -->
+      <div class="sub-tab-content" id="t2-opinion-structure">
+        <div class="card">
+          <div class="card-title">Question signals</div>
+          <div style="background:var(--bg);border-radius:var(--r-sm);padding:14px 18px;margin-bottom:14px;border:1px solid var(--border);">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px;">Look for these phrases</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              <span style="font-family:'DM Mono',monospace;font-size:12px;padding:4px 10px;background:rgba(196,98,45,0.1);border-radius:20px;color:var(--accent);">To what extent do you agree or disagree?</span>
+              <span style="font-family:'DM Mono',monospace;font-size:12px;padding:4px 10px;background:rgba(196,98,45,0.1);border-radius:20px;color:var(--accent);">Do you agree or disagree?</span>
+              <span style="font-family:'DM Mono',monospace;font-size:12px;padding:4px 10px;background:rgba(196,98,45,0.1);border-radius:20px;color:var(--accent);">Give your own opinion.</span>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">4-paragraph structure</div>
+          <div class="essay-struct">
+            <div class="es-para">
+              <div class="es-bar" style="background:var(--accent2);"></div>
+              <div class="es-body">
+                <div class="es-label" style="color:var(--accent2);">Paragraph 1 · Introduction</div>
+                <div class="es-title">Paraphrase + clear thesis</div>
+                <span class="es-time">~5 min · 40–55 words</span>
+                <div class="es-desc">Rewrite the topic statement in your own words (change vocabulary AND sentence structure). End with a clear, direct statement of your position.</div>
+                <div class="es-tips">
+                  <span class="es-tip">Never copy the question</span>
+                  <span class="es-tip">One sentence paraphrase</span>
+                  <span class="es-tip">One sentence thesis</span>
+                </div>
+              </div>
+            </div>
+            <div class="es-para">
+              <div class="es-bar" style="background:var(--accent);"></div>
+              <div class="es-body">
+                <div class="es-label" style="color:var(--accent);">Paragraph 2 · Body 1</div>
+                <div class="es-title">Main argument + support + example</div>
+                <span class="es-time">~10 min · 80–100 words</span>
+                <div class="es-desc">State your strongest reason → explain why it is true → give a specific example or piece of evidence → link back to your position.</div>
+                <div class="es-tips">
+                  <span class="es-tip">Topic sentence first</span>
+                  <span class="es-tip">Real-world example</span>
+                  <span class="es-tip">Explain significance</span>
+                </div>
+              </div>
+            </div>
+            <div class="es-para">
+              <div class="es-bar" style="background:var(--accent3);"></div>
+              <div class="es-body">
+                <div class="es-label" style="color:var(--accent3);">Paragraph 3 · Body 2</div>
+                <div class="es-title">Second argument OR concession + rebuttal</div>
+                <span class="es-time">~10 min · 80–100 words</span>
+                <div class="es-desc">Option A: second independent reason supporting your view. Option B: acknowledge the strongest counter-argument, then explain why your position is still correct.</div>
+                <div class="es-tips">
+                  <span class="es-tip">"While X is true, Y demonstrates…"</span>
+                  <span class="es-tip">Don't abandon your thesis</span>
+                </div>
+              </div>
+            </div>
+            <div class="es-para">
+              <div class="es-bar" style="background:var(--gold);"></div>
+              <div class="es-body">
+                <div class="es-label" style="color:var(--gold);">Paragraph 4 · Conclusion</div>
+                <div class="es-title">Restate thesis + summary</div>
+                <span class="es-time">~5 min · 35–45 words</span>
+                <div class="es-desc">Paraphrase your introduction. Restate your opinion using different words. Do NOT introduce new information or arguments.</div>
+                <div class="es-tips">
+                  <span class="es-tip">"In conclusion, I maintain that…"</span>
+                  <span class="es-tip">No new ideas</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Common mistakes to avoid</div>
+          <table class="avoid-table">
+            <tr><th>Avoid</th><th>→</th><th>Better</th></tr>
+            <tr><td class="bad">I think that maybe it could be good.</td><td>→</td><td class="good">I firmly believe that this policy is beneficial.</td></tr>
+            <tr><td class="bad">Both sides have good points. [no opinion given]</td><td>→</td><td class="good">While both perspectives have merit, I am convinced that… is more important.</td></tr>
+            <tr><td class="bad">In my opinion, I think, I believe… [all three]</td><td>→</td><td class="good">Use one opinion marker per sentence, vary them across the essay.</td></tr>
+            <tr><td class="bad">For example, many people agree with this.</td><td>→</td><td class="good">For instance, a 2023 WHO report found that countries with free healthcare have longer life expectancy.</td></tr>
+          </table>
+        </div>
+      </div><!-- /t2-opinion-structure -->
+
+      <!-- SAMPLE -->
+      <div class="sub-tab-content" id="t2-opinion-sample">
+        <div class="band-meter">
+          <div class="band-score">8.0</div>
+          <div class="band-bar-wrap">
+            <div class="band-bar-track"><div class="band-bar-fill" style="width:88%;"></div></div>
+            <div class="band-bar-labels"><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div>
+          </div>
+        </div>
+        <div class="band-criteria" style="margin-bottom:20px;">
+          <div class="band-crit"><strong>Task Response</strong>Clear position sustained throughout; well-developed arguments with specific examples</div>
+          <div class="band-crit"><strong>Coherence</strong>Logical progression; effective use of cohesive devices without over-reliance</div>
+          <div class="band-crit"><strong>Lexical Resource</strong>Precise academic vocabulary; sophisticated collocations; minimal errors</div>
+          <div class="band-crit"><strong>Grammar</strong>Wide range of complex structures; rare minor errors; no loss of meaning</div>
+        </div>
+        <div style="background:var(--bg);border-radius:var(--r-sm);padding:12px 18px;margin-bottom:16px;border:1px solid var(--border);font-size:13px;color:var(--ink2);font-style:italic;line-height:1.6;">
+          <strong style="font-style:normal;color:var(--ink);">Task:</strong> Some people believe that social media platforms should be subject to strict government regulation to limit harmful content. To what extent do you agree or disagree?
+        </div>
+        <div class="sample-answer">
+          <div class="sample-header">
+            <div class="sample-header-left">Band 8 Model Answer</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.4);">263 words</div>
+          </div>
+          <div class="sample-body">
+            <div class="para-block">
+              <span class="para-label label-intro">Introduction</span>
+              <div class="para-text">The pervasive influence of social media on modern public discourse has prompted considerable debate over the degree of oversight governments should exercise. <mark style="background:rgba(196,98,45,0.2);">While I acknowledge that certain regulatory measures are necessary to curb demonstrable harm, I firmly believe that excessive state control poses an unacceptable threat to freedom of expression.</mark></div>
+            </div>
+            <div class="para-block">
+              <span class="para-label label-body1">Body 1</span>
+              <div class="para-text">There are compelling grounds for some degree of regulation. Most notably, social media platforms have demonstrated a disturbing capacity to amplify misinformation at scale. Research published by the Reuters Institute found that false health narratives spread six times faster than factual content, with measurable consequences for public wellbeing during health crises. Without regulatory intervention, platforms operating on advertising-based revenue models have little financial incentive to invest in content moderation, making oversight a practical necessity rather than an ideological choice. <mark style="background:rgba(45,107,140,0.15);">Targeted measures—such as mandatory algorithmic transparency and third-party fact-checking partnerships—represent a proportionate response to these documented harms.</mark></div>
+            </div>
+            <div class="para-block">
+              <span class="para-label label-body2">Body 2</span>
+              <div class="para-text">Nevertheless, broad government control carries risks that fundamentally outweigh its benefits. Social media has become an indispensable vehicle for political dissent and civic mobilisation, particularly in nations where traditional media is state-controlled. Granting governments the authority to determine permissible speech creates a mechanism that can easily be weaponised against legitimate opposition. History provides stark illustrations of this danger: authoritarian regimes have consistently exploited communications laws to silence critics rather than protect citizens. <mark style="background:rgba(61,122,82,0.15);">The solution lies in independent regulatory bodies accountable to parliament rather than the executive, ensuring oversight without political instrumentalisation.</mark></div>
+            </div>
+            <div class="para-block">
+              <span class="para-label" style="background:#F0EBE0;color:#5C4B2A;">Conclusion</span>
+              <div class="para-text">In conclusion, I maintain that calibrated, independently administered regulation is both necessary and justified, while comprehensive state control remains a disproportionate remedy. The challenge for policymakers is to design frameworks that address specific, documented harms without surrendering the democratic values that free expression underpins.</div>
+            </div>
+            <div class="wc-row">
+              <div class="wc-chip"><strong>263</strong> words</div>
+              <div class="wc-chip"><strong>4</strong> paragraphs</div>
+              <div class="wc-chip">Clear position: <strong>partial agreement</strong></div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /t2-opinion-sample -->
+
+      <!-- PRACTICE -->
+      <div class="sub-tab-content" id="t2-opinion-practice">
+        <div class="practice-q">
+          <div class="pq-header"><div class="pq-num">01</div><div><div class="pq-title">University Education Fees</div><div class="pq-type">Opinion · 40 min · 250+ words</div></div></div>
+          <div class="pq-prompt">Some people believe that university education should be provided free of charge by governments. Others argue that students should bear the cost of their own tuition. To what extent do you agree or disagree?</div>
+          <div class="pq-visual" style="background:var(--surface);">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink3);margin-bottom:10px;">Key ideas to consider</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12.5px;">
+              <div style="background:rgba(196,98,45,0.06);border:1px solid rgba(196,98,45,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">For free tuition</div>
+                <div style="color:var(--ink2);line-height:1.6;">Social mobility · Reduces graduate debt · Attracts talent · Long-term economic return</div>
+              </div>
+              <div style="background:rgba(45,107,140,0.06);border:1px solid rgba(45,107,140,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent2);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Against free tuition</div>
+                <div style="color:var(--ink2);line-height:1.6;">Tax burden · Graduates earn more · Private benefit · System sustainability</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="practice-q">
+          <div class="pq-header"><div class="pq-num">02</div><div><div class="pq-title">Zoos and Wildlife Conservation</div><div class="pq-type">Opinion · 40 min · 250+ words</div></div></div>
+          <div class="pq-prompt">Many people argue that zoos serve no useful purpose in the modern world and that animals should only be kept in their natural habitats. To what extent do you agree or disagree with this view?</div>
+          <div class="pq-visual" style="background:var(--surface);">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink3);margin-bottom:10px;">Key ideas to consider</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12.5px;">
+              <div style="background:rgba(196,98,45,0.06);border:1px solid rgba(196,98,45,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Agree (close zoos)</div>
+                <div style="color:var(--ink2);line-height:1.6;">Unnatural confinement · Animal welfare · Natural habitats better · Genetic diversity</div>
+              </div>
+              <div style="background:rgba(45,107,140,0.06);border:1px solid rgba(45,107,140,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent2);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Disagree (keep zoos)</div>
+                <div style="color:var(--ink2);line-height:1.6;">Species conservation · Public education · Breeding programmes · Habitat destruction reality</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="practice-q">
+          <div class="pq-header"><div class="pq-num">03</div><div><div class="pq-title">Artificial Intelligence and Employment</div><div class="pq-type">Opinion · 40 min · 250+ words</div></div></div>
+          <div class="pq-prompt">Some people feel that the rapid development of artificial intelligence poses a serious and irreversible threat to employment and society as a whole. To what extent do you agree or disagree?</div>
+          <div class="pq-visual" style="background:var(--surface);">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink3);margin-bottom:10px;">Key ideas to consider</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12.5px;">
+              <div style="background:rgba(196,98,45,0.06);border:1px solid rgba(196,98,45,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">AI as a threat</div>
+                <div style="color:var(--ink2);line-height:1.6;">Automation displaces workers · Wealth inequality · Skills gap · Ethical concerns</div>
+              </div>
+              <div style="background:rgba(45,107,140,0.06);border:1px solid rgba(45,107,140,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent2);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">AI as opportunity</div>
+                <div style="color:var(--ink2);line-height:1.6;">Creates new roles · Industrial Revolution parallel · Boosts productivity · Medical advances</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /t2-opinion-practice -->
+    </section>
+
+    <!-- ═══════ TASK 2 — DISCUSSION ESSAY ═══════ -->
+    <section class="section" id="section-t2-discussion">
+      <div class="hero-band" style="--accent:#2D6B8C;">
+        <div class="hero-tag" style="background:var(--accent2);">Essay Type 2</div>
+        <h1>Discussion Essay</h1>
+        <p>Present both sides of an argument fairly, then give your own opinion. All three elements must be present.</p>
+      </div>
+
+      <div class="tab-row">
+        <button class="tab-btn active" onclick="showSubTab('t2-discussion','vocab')">Vocabulary</button>
+        <button class="tab-btn" onclick="showSubTab('t2-discussion','structure')">Structure</button>
+        <button class="tab-btn" onclick="showSubTab('t2-discussion','sample')">Band 8 Answer</button>
+        <button class="tab-btn" onclick="showSubTab('t2-discussion','practice')">Practice</button>
+      </div>
+
+      <!-- VOCAB -->
+      <div class="sub-tab-content active" id="t2-discussion-vocab">
+        <div class="card">
+          <div class="card-title">Presenting the first view <span class="card-title-badge" style="background:rgba(196,98,45,0.1);color:var(--accent);">View A</span></div>
+          <div class="vocab-grid">
+            <span class="chip accent" data-meaning="supporters of this view argue" data-ex="Proponents of this view argue that stricter laws deter criminal behaviour.">Proponents argue that</span>
+            <span class="chip accent" data-meaning="those in favour believe" data-ex="Those who advocate this position maintain that technology enhances learning.">Those who advocate</span>
+            <span class="chip accent" data-meaning="on one side of the debate" data-ex="On the one hand, there is a strong case for increasing the retirement age.">On the one hand</span>
+            <span class="chip accent" data-meaning="from this perspective" data-ex="From this perspective, privatisation offers significant efficiency gains.">From this perspective</span>
+            <span class="chip" data-meaning="it is argued that" data-ex="It is argued that urban living reduces an individual's carbon footprint.">It is argued that</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Presenting the second view <span class="card-title-badge" style="background:rgba(45,107,140,0.1);color:var(--accent2);">View B</span></div>
+          <div class="vocab-grid">
+            <span class="chip blue" data-meaning="on the other side" data-ex="On the other hand, critics point out that privatisation can increase inequality.">On the other hand</span>
+            <span class="chip blue" data-meaning="opponents of this view" data-ex="Opponents of this view contend that compulsory voting undermines democratic choice.">Opponents contend that</span>
+            <span class="chip blue" data-meaning="conversely" data-ex="Conversely, others maintain that children benefit more from unstructured play.">Conversely</span>
+            <span class="chip blue" data-meaning="in contrast to this" data-ex="In contrast, developing nations face entirely different challenges.">In contrast</span>
+            <span class="chip blue" data-meaning="those who oppose argue" data-ex="Those who oppose this measure argue that it places undue burdens on businesses.">Those who oppose</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Giving your own opinion <span class="card-title-badge" style="background:rgba(61,122,82,0.1);color:var(--accent3);">Position</span></div>
+          <div class="vocab-grid">
+            <span class="chip green" data-meaning="having considered both sides" data-ex="Having considered both perspectives, I believe the benefits of technology outweigh its risks.">Having considered both sides</span>
+            <span class="chip green" data-meaning="while both views have merit" data-ex="While both views have merit, I am inclined to support greater government intervention.">While both views have merit</span>
+            <span class="chip green" data-meaning="in my opinion, the stronger case is" data-ex="In my opinion, the stronger case lies with those who support renewable energy.">The stronger case lies with</span>
+            <span class="chip green" data-meaning="on balance" data-ex="On balance, the advantages of remote work appear to outweigh the disadvantages.">On balance</span>
+            <span class="chip green" data-meaning="I tend to side with" data-ex="I tend to side with those who argue that education should be prioritised above all.">I tend to side with</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Discourse markers for flow <span class="card-title-badge" style="background:rgba(184,148,42,0.1);color:var(--gold);">Cohesion</span></div>
+          <div class="vocab-grid">
+            <span class="chip gold" data-meaning="to add a further point" data-ex="Moreover, studies consistently show a correlation between poverty and crime.">Moreover</span>
+            <span class="chip gold" data-meaning="despite this" data-ex="Nevertheless, this does not justify abandoning the policy altogether.">Nevertheless</span>
+            <span class="chip gold" data-meaning="as a result" data-ex="Consequently, healthcare systems in many countries are under enormous strain.">Consequently</span>
+            <span class="chip gold" data-meaning="this being said" data-ex="That said, it would be premature to dismiss the opposing view entirely.">That said</span>
+            <span class="chip" data-meaning="similarly" data-ex="Likewise, governments in Scandinavia have adopted this approach with success.">Likewise</span>
+            <span class="chip" data-meaning="this shows that" data-ex="This suggests that cultural factors play a significant role.">This suggests that</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- STRUCTURE -->
+      <div class="sub-tab-content" id="t2-discussion-structure">
+        <div class="card">
+          <div class="card-title">Question signals</div>
+          <div style="background:var(--bg);border-radius:var(--r-sm);padding:14px 18px;margin-bottom:14px;border:1px solid var(--border);">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px;">Look for these phrases</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              <span style="font-family:'DM Mono',monospace;font-size:12px;padding:4px 10px;background:rgba(45,107,140,0.1);border-radius:20px;color:var(--accent2);">Discuss both views and give your own opinion.</span>
+              <span style="font-family:'DM Mono',monospace;font-size:12px;padding:4px 10px;background:rgba(45,107,140,0.1);border-radius:20px;color:var(--accent2);">Some people believe… others argue… Discuss.</span>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">4-paragraph structure</div>
+          <div class="essay-struct">
+            <div class="es-para">
+              <div class="es-bar" style="background:var(--accent2);"></div>
+              <div class="es-body">
+                <div class="es-label" style="color:var(--accent2);">Paragraph 1 · Introduction</div>
+                <div class="es-title">Paraphrase + outline both views + your opinion</div>
+                <span class="es-time">~5 min · 50–60 words</span>
+                <div class="es-desc">Paraphrase the topic. State that there are two perspectives. Signal which side you personally support (one brief sentence). Do not elaborate yet.</div>
+                <div class="es-tips"><span class="es-tip">3 sentences recommended</span><span class="es-tip">State opinion clearly</span></div>
+              </div>
+            </div>
+            <div class="es-para">
+              <div class="es-bar" style="background:var(--accent);"></div>
+              <div class="es-body">
+                <div class="es-label" style="color:var(--accent);">Paragraph 2 · Body 1 — First View</div>
+                <div class="es-title">Present View A with reasons and example</div>
+                <span class="es-time">~10 min · 80–90 words</span>
+                <div class="es-desc">Present the first perspective fairly. Give 1–2 reasons why people hold this view. Support with a real-world example. Don't show bias even if you disagree.</div>
+                <div class="es-tips"><span class="es-tip">Explain, don't just list</span><span class="es-tip">Specific example</span></div>
+              </div>
+            </div>
+            <div class="es-para">
+              <div class="es-bar" style="background:var(--accent3);"></div>
+              <div class="es-body">
+                <div class="es-label" style="color:var(--accent3);">Paragraph 3 · Body 2 — Second View + Your Opinion</div>
+                <div class="es-title">Present View B + reinforce your position</div>
+                <span class="es-time">~10 min · 90–100 words</span>
+                <div class="es-desc">Present the second perspective with reasons and example. End this paragraph (or add a mini-paragraph) explicitly reinforcing your stated opinion with your own reasoning.</div>
+                <div class="es-tips"><span class="es-tip">Don't be neutral</span><span class="es-tip">Make your view clear</span></div>
+              </div>
+            </div>
+            <div class="es-para">
+              <div class="es-bar" style="background:var(--gold);"></div>
+              <div class="es-body">
+                <div class="es-label" style="color:var(--gold);">Paragraph 4 · Conclusion</div>
+                <div class="es-title">Summary of both views + restate opinion</div>
+                <span class="es-time">~5 min · 35–45 words</span>
+                <div class="es-desc">Briefly summarise both sides. Restate your opinion clearly using different words from the introduction. No new information.</div>
+                <div class="es-tips"><span class="es-tip">"While some believe… I maintain…"</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Common mistakes to avoid</div>
+          <table class="avoid-table">
+            <tr><th>Avoid</th><th>→</th><th>Better</th></tr>
+            <tr><td class="bad">No opinion given at all</td><td>→</td><td class="good">Always end with a clear statement of your own view, even if brief.</td></tr>
+            <tr><td class="bad">Both views in the same paragraph</td><td>→</td><td class="good">Dedicate one paragraph to each side for coherence marks.</td></tr>
+            <tr><td class="bad">One view is very short, the other long</td><td>→</td><td class="good">Both views should receive roughly equal treatment.</td></tr>
+            <tr><td class="bad">Using "I" too many times in each sentence</td><td>→</td><td class="good">Reserve "I" for your personal view; use impersonal forms for reporting others' views.</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- SAMPLE -->
+      <div class="sub-tab-content" id="t2-discussion-sample">
+        <div class="band-meter">
+          <div class="band-score">8.0</div>
+          <div class="band-bar-wrap">
+            <div class="band-bar-track"><div class="band-bar-fill" style="width:88%;"></div></div>
+            <div class="band-bar-labels"><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div>
+          </div>
+        </div>
+        <div style="background:var(--bg);border-radius:var(--r-sm);padding:12px 18px;margin-bottom:16px;border:1px solid var(--border);font-size:13px;color:var(--ink2);font-style:italic;line-height:1.6;">
+          <strong style="font-style:normal;color:var(--ink);">Task:</strong> Some people believe that children benefit more from spending time on outdoor play, while others feel that academic study is more important for children's development. Discuss both views and give your own opinion.
+        </div>
+        <div class="sample-answer">
+          <div class="sample-header">
+            <div class="sample-header-left">Band 8 Model Answer</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.4);">271 words</div>
+          </div>
+          <div class="sample-body">
+            <div class="para-block">
+              <span class="para-label label-intro">Introduction</span>
+              <div class="para-text">The question of how children should spend their formative years—engaged in physical outdoor activities or focused on structured academic learning—remains a subject of considerable debate among educators and parents alike. While both approaches offer genuine developmental benefits, <mark style="background:rgba(196,98,45,0.2);">I believe that a curriculum integrating both, rather than prioritising one at the expense of the other, produces the most well-rounded individuals.</mark></div>
+            </div>
+            <div class="para-block">
+              <span class="para-label label-body1">Body 1 — Outdoor Play</span>
+              <div class="para-text">Proponents of outdoor activity argue convincingly that physical play fosters a range of competencies that formal education frequently neglects. Motor skills, resilience, and the capacity for cooperative problem-solving all develop naturally through unstructured play. Furthermore, research published in the British Journal of Sports Medicine consistently demonstrates that regular physical activity enhances cognitive function and improves concentration—qualities that ultimately benefit academic performance. Countries such as Finland, which incorporate substantial outdoor time into their school day, regularly outperform global peers in educational assessments, lending empirical support to this position.</div>
+            </div>
+            <div class="para-block">
+              <span class="para-label label-body2">Body 2 — Academic Study + Opinion</span>
+              <div class="para-text">Conversely, advocates of academic prioritisation contend that early intellectual engagement provides children with foundational cognitive frameworks that are difficult to develop later. In a knowledge-driven global economy, proficiency in mathematics, literacy, and science from a young age confers a competitive advantage that shapes lifelong opportunities. That said, I would argue that framing these objectives as mutually exclusive reflects a false dichotomy. Evidence from Scandinavian educational models suggests that children who play freely for significant portions of the school day also achieve higher academic outcomes, demonstrating that the two goals are complementary rather than competing.</div>
+            </div>
+            <div class="para-block">
+              <span class="para-label" style="background:#F0EBE0;color:#5C4B2A;">Conclusion</span>
+              <div class="para-text">In conclusion, while both outdoor play and academic study serve distinct and valuable purposes, I maintain that an integrated approach yields the greatest developmental returns. Treating these goals as incompatible denies children the balanced foundation they need to thrive.</div>
+            </div>
+            <div class="wc-row">
+              <div class="wc-chip"><strong>271</strong> words</div>
+              <div class="wc-chip"><strong>Both views + opinion</strong> all present</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRACTICE -->
+      <div class="sub-tab-content" id="t2-discussion-practice">
+        <div class="practice-q">
+          <div class="pq-header"><div class="pq-num">01</div><div><div class="pq-title">Online vs Face-to-Face Learning</div><div class="pq-type">Discussion · 40 min · 250+ words</div></div></div>
+          <div class="pq-prompt">Some argue that traditional classroom education is becoming outdated and should be replaced by online learning. Others feel that face-to-face teaching remains essential for effective education. Discuss both views and give your own opinion.</div>
+          <div class="pq-visual" style="background:var(--surface);">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12.5px;">
+              <div style="background:rgba(196,98,45,0.06);border:1px solid rgba(196,98,45,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Online learning</div>
+                <div style="color:var(--ink2);line-height:1.6;">Flexible access · Global reach · Cost-effective · Self-paced · Rural communities</div>
+              </div>
+              <div style="background:rgba(45,107,140,0.06);border:1px solid rgba(45,107,140,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent2);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Face-to-face</div>
+                <div style="color:var(--ink2);line-height:1.6;">Social development · Immediate feedback · Motivation · Practical skills · Mentorship</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="practice-q">
+          <div class="pq-header"><div class="pq-num">02</div><div><div class="pq-title">Prison Sentences vs Community Service</div><div class="pq-type">Discussion · 40 min · 250+ words</div></div></div>
+          <div class="pq-prompt">Some people believe the most effective way to reduce crime is through longer prison sentences. Others argue that community service and rehabilitation programmes are more beneficial. Discuss both views and give your own opinion.</div>
+          <div class="pq-visual" style="background:var(--surface);">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12.5px;">
+              <div style="background:rgba(196,98,45,0.06);border:1px solid rgba(196,98,45,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Longer sentences</div>
+                <div style="color:var(--ink2);line-height:1.6;">Deterrence · Public safety · Punishment · Justice for victims</div>
+              </div>
+              <div style="background:rgba(45,107,140,0.06);border:1px solid rgba(45,107,140,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent2);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Rehabilitation</div>
+                <div style="color:var(--ink2);line-height:1.6;">Reduces reoffending · Cost-effective · Addresses root causes · Social reintegration</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="practice-q">
+          <div class="pq-header"><div class="pq-num">03</div><div><div class="pq-title">Global Language vs Cultural Identity</div><div class="pq-type">Discussion · 40 min · 250+ words</div></div></div>
+          <div class="pq-prompt">Some people believe that having a single global language would benefit the world enormously. Others feel that the loss of other languages would represent a serious cultural setback. Discuss both views and give your own opinion.</div>
+          <div class="pq-visual" style="background:var(--surface);">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12.5px;">
+              <div style="background:rgba(196,98,45,0.06);border:1px solid rgba(196,98,45,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Single global language</div>
+                <div style="color:var(--ink2);line-height:1.6;">Business efficiency · International cooperation · Reduces misunderstanding · Travel</div>
+              </div>
+              <div style="background:rgba(45,107,140,0.06);border:1px solid rgba(45,107,140,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent2);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Language diversity</div>
+                <div style="color:var(--ink2);line-height:1.6;">Cultural heritage · Indigenous knowledge · Cognitive benefits · Identity</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ TASK 2 — PROBLEM & SOLUTION ═══════ -->
+    <section class="section" id="section-t2-problem">
+      <div class="hero-band">
+        <div class="hero-tag" style="background:var(--accent3);">Essay Type 3</div>
+        <h1>Problem &amp; Solution</h1>
+        <p>Identify causes of a problem, then propose specific, realistic solutions. Equal weight to both halves.</p>
+      </div>
+
+      <div class="tab-row">
+        <button class="tab-btn active" onclick="showSubTab('t2-problem','vocab')">Vocabulary</button>
+        <button class="tab-btn" onclick="showSubTab('t2-problem','structure')">Structure</button>
+        <button class="tab-btn" onclick="showSubTab('t2-problem','sample')">Band 8 Answer</button>
+        <button class="tab-btn" onclick="showSubTab('t2-problem','practice')">Practice</button>
+      </div>
+
+      <!-- VOCAB -->
+      <div class="sub-tab-content active" id="t2-problem-vocab">
+        <div class="card">
+          <div class="card-title">Describing problems &amp; causes <span class="card-title-badge" style="background:rgba(196,98,45,0.1);color:var(--accent);">Cause</span></div>
+          <div class="vocab-grid">
+            <span class="chip accent" data-meaning="the main reason is" data-ex="A primary cause of childhood obesity is the proliferation of ultra-processed foods.">A primary cause of</span>
+            <span class="chip accent" data-meaning="can be traced back to" data-ex="This problem can be attributed to inadequate government investment in public transport.">Can be attributed to</span>
+            <span class="chip accent" data-meaning="results from" data-ex="Youth unemployment largely stems from a widening skills gap between education and industry.">Stems from</span>
+            <span class="chip accent" data-meaning="plays a major role in" data-ex="Sedentary lifestyles play a significant role in the rise of cardiovascular disease.">Plays a significant role in</span>
+            <span class="chip" data-meaning="leads to" data-ex="Rapid urbanisation has given rise to severe housing shortages in many cities.">Has given rise to</span>
+            <span class="chip" data-meaning="is made worse by" data-ex="The problem is compounded by a lack of affordable housing in urban centres.">Is compounded by</span>
+            <span class="chip" data-meaning="contributes to" data-ex="Social media algorithms contribute significantly to the spread of misinformation.">Contributes significantly to</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Proposing solutions <span class="card-title-badge" style="background:rgba(61,122,82,0.1);color:var(--accent3);">Solution</span></div>
+          <div class="vocab-grid">
+            <span class="chip green" data-meaning="one effective solution would be" data-ex="One effective measure would be to introduce a sugar tax on processed beverages.">One effective measure would be</span>
+            <span class="chip green" data-meaning="governments could address this by" data-ex="Governments could address this issue by investing in renewable energy infrastructure.">Governments could address this by</span>
+            <span class="chip green" data-meaning="a practical approach is" data-ex="A practical approach would involve mandatory media literacy programmes in schools.">A practical approach would involve</span>
+            <span class="chip green" data-meaning="this could be resolved if" data-ex="The situation could be alleviated if employers offered flexible working arrangements.">Could be alleviated if</span>
+            <span class="chip green" data-meaning="to tackle this issue" data-ex="To tackle this issue effectively, a multi-faceted approach is required.">To tackle this effectively</span>
+            <span class="chip" data-meaning="legislation could require" data-ex="Stricter regulation could compel companies to reduce plastic packaging.">Stricter regulation could</span>
+            <span class="chip" data-meaning="public awareness campaigns" data-ex="Awareness campaigns could significantly shift public attitudes towards recycling.">Awareness campaigns could</span>
+            <span class="chip" data-meaning="investment in X would" data-ex="Investment in public transport infrastructure would reduce reliance on private vehicles.">Investment in X would</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Emphasising urgency &amp; impact <span class="card-title-badge" style="background:rgba(45,107,140,0.1);color:var(--accent2);">Impact</span></div>
+          <div class="vocab-grid">
+            <span class="chip blue" data-meaning="if not addressed" data-ex="If this issue is not addressed urgently, the consequences for future generations will be severe.">If not addressed urgently</span>
+            <span class="chip blue" data-meaning="the long-term consequences include" data-ex="The long-term repercussions of inaction include irreversible environmental damage.">Long-term repercussions</span>
+            <span class="chip blue" data-meaning="this is a growing concern" data-ex="This is a pressing concern that demands immediate coordinated action.">A pressing concern</span>
+            <span class="chip blue" data-meaning="the scale of the problem" data-ex="The magnitude of this challenge cannot be overstated.">The magnitude of</span>
+            <span class="chip" data-meaning="would yield significant benefits" data-ex="These measures would yield considerable social and economic benefits over time.">Would yield considerable benefits</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- STRUCTURE -->
+      <div class="sub-tab-content" id="t2-problem-structure">
+        <div class="card">
+          <div class="card-title">Question signals</div>
+          <div style="background:var(--bg);border-radius:var(--r-sm);padding:14px 18px;margin-bottom:14px;border:1px solid var(--border);">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px;">Look for these phrases</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              <span style="font-family:'DM Mono',monospace;font-size:12px;padding:4px 10px;background:rgba(61,122,82,0.1);border-radius:20px;color:var(--accent3);">What are the causes of this problem and what solutions can be suggested?</span>
+              <span style="font-family:'DM Mono',monospace;font-size:12px;padding:4px 10px;background:rgba(61,122,82,0.1);border-radius:20px;color:var(--accent3);">What measures can be taken to address it?</span>
+              <span style="font-family:'DM Mono',monospace;font-size:12px;padding:4px 10px;background:rgba(61,122,82,0.1);border-radius:20px;color:var(--accent3);">Why does this happen and how can it be resolved?</span>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">4-paragraph structure</div>
+          <div class="essay-struct">
+            <div class="es-para">
+              <div class="es-bar" style="background:var(--accent2);"></div>
+              <div class="es-body">
+                <div class="es-label" style="color:var(--accent2);">Paragraph 1 · Introduction</div>
+                <div class="es-title">Paraphrase + acknowledge the problem + outline essay</div>
+                <span class="es-time">~5 min · 40–50 words</span>
+                <div class="es-desc">Paraphrase the issue. Acknowledge it is a serious concern. State that the essay will examine causes and propose solutions.</div>
+                <div class="es-tips"><span class="es-tip">Don't use "this essay"</span><span class="es-tip">Academic tone</span></div>
+              </div>
+            </div>
+            <div class="es-para">
+              <div class="es-bar" style="background:var(--accent);"></div>
+              <div class="es-body">
+                <div class="es-label" style="color:var(--accent);">Paragraph 2 · Body 1 — Causes / Problems</div>
+                <div class="es-title">2–3 causes with explanation</div>
+                <span class="es-time">~10 min · 80–100 words</span>
+                <div class="es-desc">Identify the main causes. Use cause-and-effect language. Give real examples or data. Show the causes are interconnected where possible.</div>
+                <div class="es-tips"><span class="es-tip">"A primary cause is…"</span><span class="es-tip">"This is compounded by…"</span></div>
+              </div>
+            </div>
+            <div class="es-para">
+              <div class="es-bar" style="background:var(--accent3);"></div>
+              <div class="es-body">
+                <div class="es-label" style="color:var(--accent3);">Paragraph 3 · Body 2 — Solutions</div>
+                <div class="es-title">2–3 realistic solutions matched to causes</div>
+                <span class="es-time">~10 min · 80–100 words</span>
+                <div class="es-desc">Propose specific solutions that directly address the causes from Body 1. Say who should act (government, individuals, schools). Explain how/why each solution would work.</div>
+                <div class="es-tips"><span class="es-tip">Match solutions to causes</span><span class="es-tip">Be specific</span></div>
+              </div>
+            </div>
+            <div class="es-para">
+              <div class="es-bar" style="background:var(--gold);"></div>
+              <div class="es-body">
+                <div class="es-label" style="color:var(--gold);">Paragraph 4 · Conclusion</div>
+                <div class="es-title">Summary of causes + solutions + outlook</div>
+                <span class="es-time">~5 min · 35–45 words</span>
+                <div class="es-desc">Briefly restate the main causes and the solutions proposed. You may add an optimistic or warning note about the future if the solutions are or are not adopted.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SAMPLE -->
+      <div class="sub-tab-content" id="t2-problem-sample">
+        <div class="band-meter">
+          <div class="band-score">8.0</div>
+          <div class="band-bar-wrap">
+            <div class="band-bar-track"><div class="band-bar-fill" style="width:88%;"></div></div>
+            <div class="band-bar-labels"><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div>
+          </div>
+        </div>
+        <div style="background:var(--bg);border-radius:var(--r-sm);padding:12px 18px;margin-bottom:16px;border:1px solid var(--border);font-size:13px;color:var(--ink2);font-style:italic;line-height:1.6;">
+          <strong style="font-style:normal;color:var(--ink);">Task:</strong> In many countries, the number of young people who are overweight or obese is increasing at an alarming rate. What are the causes of this trend and what measures can governments and individuals take to address it?
+        </div>
+        <div class="sample-answer">
+          <div class="sample-header">
+            <div class="sample-header-left">Band 8 Model Answer</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.4);">268 words</div>
+          </div>
+          <div class="sample-body">
+            <div class="para-block">
+              <span class="para-label label-intro">Introduction</span>
+              <div class="para-text">The escalating prevalence of obesity among young people represents one of the most pressing public health challenges facing governments worldwide. This essay will examine the principal factors driving this trend before proposing a series of practical interventions at both individual and policy levels.</div>
+            </div>
+            <div class="para-block">
+              <span class="para-label label-body1">Causes</span>
+              <div class="para-text">Several interconnected factors have contributed to rising rates of childhood obesity. Most significantly, <mark style="background:rgba(196,98,45,0.2);">the proliferation of ultra-processed foods—aggressively marketed to children and typically laden with sugar, salt, and saturated fats—has fundamentally altered dietary patterns in many societies.</mark> Simultaneously, increasingly sedentary lifestyles driven by extended screen time and the marginalisation of physical education in school curricula mean that young people are consuming more calories than they expend. Socioeconomic inequality compounds these issues further, as families in lower-income brackets frequently rely on inexpensive convenience foods and lack access to safe outdoor spaces for exercise.</div>
+            </div>
+            <div class="para-block">
+              <span class="para-label label-body2">Solutions</span>
+              <div class="para-text">Addressing this multifaceted problem demands coordinated action at multiple levels. <mark style="background:rgba(61,122,82,0.2);">Governments should introduce stringent restrictions on the advertising of unhealthy foods to minors and implement taxes on sugary beverages</mark>—measures that have already demonstrated effectiveness in Mexico and the United Kingdom. Schools play an equally critical role; reinstating mandatory physical education and reforming cafeteria menus to prioritise nutritious options would directly target two of the causes identified above. At the individual level, greater nutritional awareness, facilitated through accessible public health campaigns, can help families make more informed dietary choices regardless of income level.</div>
+            </div>
+            <div class="para-block">
+              <span class="para-label" style="background:#F0EBE0;color:#5C4B2A;">Conclusion</span>
+              <div class="para-text">In summary, poor dietary habits, physical inactivity, and socioeconomic inequality collectively drive rising youth obesity rates. Tackling this crisis effectively demands a whole-of-society response encompassing regulatory reform, educational policy changes, and greater individual awareness.</div>
+            </div>
+            <div class="wc-row"><div class="wc-chip"><strong>268</strong> words</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRACTICE -->
+      <div class="sub-tab-content" id="t2-problem-practice">
+        <div class="practice-q">
+          <div class="pq-header"><div class="pq-num">01</div><div><div class="pq-title">Urban Traffic Congestion</div><div class="pq-type">Problem &amp; Solution · 40 min · 250+ words</div></div></div>
+          <div class="pq-prompt">Traffic congestion in major cities has become a serious and growing problem. What are the main causes of this issue and what solutions can be suggested to reduce it?</div>
+          <div class="pq-visual" style="background:var(--surface);">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12.5px;">
+              <div style="background:rgba(196,98,45,0.06);border:1px solid rgba(196,98,45,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Causes</div>
+                <div style="color:var(--ink2);line-height:1.6;">Car dependency · Poor public transport · Urban sprawl · Population growth · Commuter culture</div>
+              </div>
+              <div style="background:rgba(61,122,82,0.06);border:1px solid rgba(61,122,82,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent3);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Solutions</div>
+                <div style="color:var(--ink2);line-height:1.6;">Congestion charges · Improve public transport · Cycle infrastructure · Remote working · Urban planning</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="practice-q">
+          <div class="pq-header"><div class="pq-num">02</div><div><div class="pq-title">Work-Life Imbalance</div><div class="pq-type">Problem &amp; Solution · 40 min · 250+ words</div></div></div>
+          <div class="pq-prompt">Many people today find it increasingly difficult to achieve a healthy balance between their professional and personal lives. What factors have contributed to this problem and what steps can be taken to resolve it?</div>
+          <div class="pq-visual" style="background:var(--surface);">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12.5px;">
+              <div style="background:rgba(196,98,45,0.06);border:1px solid rgba(196,98,45,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Causes</div>
+                <div style="color:var(--ink2);line-height:1.6;">Always-on culture · Technology blurring boundaries · Job insecurity · Long working hours · Career pressure</div>
+              </div>
+              <div style="background:rgba(61,122,82,0.06);border:1px solid rgba(61,122,82,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent3);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Solutions</div>
+                <div style="color:var(--ink2);line-height:1.6;">Right-to-disconnect laws · Flexible hours · Mental health support · Four-day week pilots · Mindfulness</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="practice-q">
+          <div class="pq-header"><div class="pq-num">03</div><div><div class="pq-title">Plastic Pollution in Oceans</div><div class="pq-type">Problem &amp; Solution · 40 min · 250+ words</div></div></div>
+          <div class="pq-prompt">Plastic pollution in the world's oceans is increasing rapidly and threatening marine ecosystems. What are the causes of this problem and what measures could be introduced to tackle it?</div>
+          <div class="pq-visual" style="background:var(--surface);">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12.5px;">
+              <div style="background:rgba(196,98,45,0.06);border:1px solid rgba(196,98,45,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Causes</div>
+                <div style="color:var(--ink2);line-height:1.6;">Single-use plastics · Inadequate waste management · Industrial discharge · Consumer habits · River runoff</div>
+              </div>
+              <div style="background:rgba(61,122,82,0.06);border:1px solid rgba(61,122,82,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent3);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Solutions</div>
+                <div style="color:var(--ink2);line-height:1.6;">Plastic bans · Extended producer responsibility · Ocean clean-up tech · Education · International treaties</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ TASK 2 — ADVANTAGES & DISADVANTAGES ═══════ -->
+    <section class="section" id="section-t2-advantages">
+      <div class="hero-band">
+        <div class="hero-tag" style="background:var(--gold);">Essay Type 4</div>
+        <h1>Advantages &amp; Disadvantages</h1>
+        <p>Examine both positive and negative aspects equally. Watch for hidden opinion variants: "Do advantages outweigh disadvantages?"</p>
+      </div>
+
+      <div class="tab-row">
+        <button class="tab-btn active" onclick="showSubTab('t2-advantages','vocab')">Vocabulary</button>
+        <button class="tab-btn" onclick="showSubTab('t2-advantages','structure')">Structure</button>
+        <button class="tab-btn" onclick="showSubTab('t2-advantages','sample')">Band 8 Answer</button>
+        <button class="tab-btn" onclick="showSubTab('t2-advantages','practice')">Practice</button>
+      </div>
+
+      <!-- VOCAB -->
+      <div class="sub-tab-content active" id="t2-advantages-vocab">
+        <div class="card">
+          <div class="card-title">Stating advantages <span class="card-title-badge" style="background:rgba(61,122,82,0.1);color:var(--accent3);">Benefits</span></div>
+          <div class="vocab-grid">
+            <span class="chip green" data-meaning="the main benefit is" data-ex="The principal advantage of remote work is the elimination of time-consuming commutes.">The principal advantage</span>
+            <span class="chip green" data-meaning="a notable benefit" data-ex="A significant benefit of online banking is the convenience of 24-hour access.">A significant benefit</span>
+            <span class="chip green" data-meaning="one clear positive is" data-ex="One positive outcome of globalisation is the wider availability of goods at lower prices.">One positive outcome</span>
+            <span class="chip green" data-meaning="this enables X to" data-ex="This enables individuals to access information that was previously restricted to specialists.">This enables X to</span>
+            <span class="chip green" data-meaning="perhaps the most important advantage" data-ex="Perhaps the most compelling benefit is the potential to reduce carbon emissions significantly.">Perhaps the most compelling benefit</span>
+            <span class="chip" data-meaning="in addition to this" data-ex="Beyond this, digitalisation has created entirely new employment categories.">Beyond this</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Stating disadvantages <span class="card-title-badge" style="background:rgba(196,98,45,0.1);color:var(--accent);">Drawbacks</span></div>
+          <div class="vocab-grid">
+            <span class="chip accent" data-meaning="the main drawback is" data-ex="The principal drawback of social media is its contribution to the spread of misinformation.">The principal drawback</span>
+            <span class="chip accent" data-meaning="a major downside is" data-ex="A major downside of private healthcare is that it systematically excludes the poorest members of society.">A major downside</span>
+            <span class="chip accent" data-meaning="one concern is that" data-ex="One concern is that increased automation may exacerbate existing inequalities.">One concern is that</span>
+            <span class="chip accent" data-meaning="this comes at a cost" data-ex="This convenience comes at a considerable cost to personal privacy.">This comes at a cost to</span>
+            <span class="chip accent" data-meaning="a potential negative consequence" data-ex="A potential negative consequence is the erosion of traditional community bonds.">A potential negative consequence</span>
+            <span class="chip" data-meaning="it cannot be denied that" data-ex="It cannot be denied that excessive screen time has harmful effects on children's development.">It cannot be denied that</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Weighing up &amp; concluding <span class="card-title-badge" style="background:rgba(184,148,42,0.1);color:var(--gold);">Balance</span></div>
+          <div class="vocab-grid">
+            <span class="chip gold" data-meaning="taking everything into account" data-ex="Taking everything into consideration, the advantages appear to outweigh the disadvantages.">Taking everything into consideration</span>
+            <span class="chip gold" data-meaning="on the whole" data-ex="On the whole, the positive effects of tourism far exceed the negative.">On the whole</span>
+            <span class="chip gold" data-meaning="despite its drawbacks" data-ex="Despite its drawbacks, technology has fundamentally improved human quality of life.">Despite its drawbacks</span>
+            <span class="chip gold" data-meaning="the benefits outweigh the costs" data-ex="I believe the long-term benefits outweigh the short-term costs involved.">The benefits outweigh the costs</span>
+            <span class="chip" data-meaning="whilst beneficial in many respects" data-ex="Whilst beneficial in many respects, this approach has significant limitations.">Whilst beneficial in many respects</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- STRUCTURE -->
+      <div class="sub-tab-content" id="t2-advantages-structure">
+        <div class="card">
+          <div class="card-title">Two question variants — read carefully</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px;">
+            <div style="background:rgba(61,122,82,0.06);border:1px solid rgba(61,122,82,0.2);border-radius:var(--r-sm);padding:14px;">
+              <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent3);margin-bottom:6px;">Balanced (no opinion)</div>
+              <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--ink2);">"What are the advantages and disadvantages?"</div>
+              <div style="font-size:12.5px;color:var(--ink2);margin-top:8px;">Present both sides equally. Conclusion summarises without a personal stance.</div>
+            </div>
+            <div style="background:rgba(196,98,45,0.06);border:1px solid rgba(196,98,45,0.2);border-radius:var(--r-sm);padding:14px;">
+              <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">Opinion variant</div>
+              <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--ink2);">"Do the advantages outweigh the disadvantages?"</div>
+              <div style="font-size:12.5px;color:var(--ink2);margin-top:8px;">Give a clear overall judgement. This is partly an opinion essay — state your view.</div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">4-paragraph structure</div>
+          <div class="essay-struct">
+            <div class="es-para">
+              <div class="es-bar" style="background:var(--accent2);"></div>
+              <div class="es-body">
+                <div class="es-label" style="color:var(--accent2);">Paragraph 1 · Introduction</div>
+                <div class="es-title">Paraphrase + signal both sides to be examined</div>
+                <span class="es-time">~5 min · 40–50 words</span>
+                <div class="es-desc">Paraphrase the topic. Signal that both advantages and disadvantages exist and will be explored. If it is an opinion variant, include your overall view.</div>
+              </div>
+            </div>
+            <div class="es-para">
+              <div class="es-bar" style="background:var(--accent3);"></div>
+              <div class="es-body">
+                <div class="es-label" style="color:var(--accent3);">Paragraph 2 · Body 1 — Advantages</div>
+                <div class="es-title">2 clear benefits with explanation and examples</div>
+                <span class="es-time">~10 min · 80–100 words</span>
+                <div class="es-desc">State your main advantage. Explain why it is a benefit. Support with a specific example or evidence. Add a second advantage if space allows.</div>
+                <div class="es-tips"><span class="es-tip">"The principal advantage…"</span><span class="es-tip">Specific example essential</span></div>
+              </div>
+            </div>
+            <div class="es-para">
+              <div class="es-bar" style="background:var(--accent);"></div>
+              <div class="es-body">
+                <div class="es-label" style="color:var(--accent);">Paragraph 3 · Body 2 — Disadvantages</div>
+                <div class="es-title">2 clear drawbacks with explanation and examples</div>
+                <span class="es-time">~10 min · 80–100 words</span>
+                <div class="es-desc">Mirror the structure of Body 1. Present disadvantages with equal seriousness. Avoid dismissing them as trivial unless you're making an explicit argument that they are minor.</div>
+                <div class="es-tips"><span class="es-tip">"A significant drawback…"</span></div>
+              </div>
+            </div>
+            <div class="es-para">
+              <div class="es-bar" style="background:var(--gold);"></div>
+              <div class="es-body">
+                <div class="es-label" style="color:var(--gold);">Paragraph 4 · Conclusion</div>
+                <div class="es-title">Balanced summary (or clear overall verdict)</div>
+                <span class="es-time">~5 min · 35–45 words</span>
+                <div class="es-desc">For a balanced question: summarise both sides. For the opinion variant: give a clear verdict on whether advantages outweigh disadvantages, with a brief reason.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SAMPLE -->
+      <div class="sub-tab-content" id="t2-advantages-sample">
+        <div class="band-meter">
+          <div class="band-score">8.0</div>
+          <div class="band-bar-wrap">
+            <div class="band-bar-track"><div class="band-bar-fill" style="width:88%;"></div></div>
+            <div class="band-bar-labels"><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div>
+          </div>
+        </div>
+        <div style="background:var(--bg);border-radius:var(--r-sm);padding:12px 18px;margin-bottom:16px;border:1px solid var(--border);font-size:13px;color:var(--ink2);font-style:italic;line-height:1.6;">
+          <strong style="font-style:normal;color:var(--ink);">Task:</strong> Advances in technology have significantly changed the way people communicate with one another. What are the advantages and disadvantages of this development?
+        </div>
+        <div class="sample-answer">
+          <div class="sample-header">
+            <div class="sample-header-left">Band 8 Model Answer</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.4);">262 words</div>
+          </div>
+          <div class="sample-body">
+            <div class="para-block">
+              <span class="para-label label-intro">Introduction</span>
+              <div class="para-text">Digital technology has fundamentally transformed human communication, rendering instantaneous global connection a routine feature of modern life. While this development has brought significant benefits in terms of accessibility and efficiency, it has also introduced drawbacks that deserve careful consideration.</div>
+            </div>
+            <div class="para-block">
+              <span class="para-label" style="background:#E8F5EE;color:#0F6E56;">Advantages</span>
+              <div class="para-text"><mark style="background:rgba(61,122,82,0.15);">The principal advantage of technology-mediated communication is the unprecedented degree of connectivity it enables.</mark> Video calling platforms allow families separated by continents to maintain meaningful emotional bonds, while collaborative tools have dramatically increased workplace productivity by allowing teams to operate effectively across time zones. Furthermore, digital communication has democratised access to information; individuals in remote or underserved areas can now connect with specialists and educators who were previously geographically inaccessible, thereby reducing inequalities rooted in physical location.</div>
+            </div>
+            <div class="para-block">
+              <span class="para-label" style="background:#FDE8E8;color:#8C2D2D;">Disadvantages</span>
+              <div class="para-text">These gains must, however, be weighed against notable drawbacks. <mark style="background:rgba(196,98,45,0.15);">The reduction in face-to-face interaction has been linked by researchers to declining social skills, particularly among younger generations who have grown up communicating primarily through screens.</mark> Digital communication, stripped of non-verbal cues such as tone of voice and facial expression, is inherently more susceptible to misinterpretation and conflict. Moreover, the erosion of in-person socialisation may be contributing to rising levels of loneliness and social anxiety, which have become significant public health concerns in numerous developed nations.</div>
+            </div>
+            <div class="para-block">
+              <span class="para-label" style="background:#F0EBE0;color:#5C4B2A;">Conclusion</span>
+              <div class="para-text">In conclusion, whilst technology has made communication faster and more accessible, it has simultaneously diminished certain irreplaceable aspects of human connection. Individuals and societies must strive to harness the practical benefits of these tools whilst consciously preserving the value of direct, in-person interaction.</div>
+            </div>
+            <div class="wc-row"><div class="wc-chip"><strong>262</strong> words</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRACTICE -->
+      <div class="sub-tab-content" id="t2-advantages-practice">
+        <div class="practice-q">
+          <div class="pq-header"><div class="pq-num">01</div><div><div class="pq-title">International Tourism</div><div class="pq-type">Adv &amp; Disadv · 40 min · 250+ words</div></div></div>
+          <div class="pq-prompt">Tourism has become one of the world's largest industries in recent decades. What are the advantages and disadvantages of the growth in international tourism?</div>
+          <div class="pq-visual" style="background:var(--surface);">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12.5px;">
+              <div style="background:rgba(61,122,82,0.06);border:1px solid rgba(61,122,82,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent3);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Advantages</div>
+                <div style="color:var(--ink2);line-height:1.6;">Economic growth · Employment · Cultural exchange · Infrastructure investment · Conservation funding</div>
+              </div>
+              <div style="background:rgba(196,98,45,0.06);border:1px solid rgba(196,98,45,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Disadvantages</div>
+                <div style="color:var(--ink2);line-height:1.6;">Environmental damage · Over-tourism · Cultural erosion · Carbon footprint · Rising local costs</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="practice-q">
+          <div class="pq-header"><div class="pq-num">02</div><div><div class="pq-title">Working From Home</div><div class="pq-type">Adv &amp; Disadv · 40 min · 250+ words</div></div></div>
+          <div class="pq-prompt">More and more people are choosing to work from home rather than commute to a traditional office environment. What are the advantages and disadvantages of this trend?</div>
+          <div class="pq-visual" style="background:var(--surface);">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12.5px;">
+              <div style="background:rgba(61,122,82,0.06);border:1px solid rgba(61,122,82,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent3);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Advantages</div>
+                <div style="color:var(--ink2);line-height:1.6;">Flexibility · No commute · Cost savings · Better work-life balance · Increased productivity</div>
+              </div>
+              <div style="background:rgba(196,98,45,0.06);border:1px solid rgba(196,98,45,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Disadvantages</div>
+                <div style="color:var(--ink2);line-height:1.6;">Isolation · Blurred boundaries · Reduced collaboration · Home distractions · Career progression</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="practice-q">
+          <div class="pq-header"><div class="pq-num">03</div><div><div class="pq-title">Nuclear Energy</div><div class="pq-type">Adv &amp; Disadv · 40 min · 250+ words</div></div></div>
+          <div class="pq-prompt">Some countries have significantly increased their use of nuclear energy as an alternative to fossil fuels. Do the advantages of nuclear energy outweigh the disadvantages?</div>
+          <div class="pq-visual" style="background:var(--surface);">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12.5px;">
+              <div style="background:rgba(61,122,82,0.06);border:1px solid rgba(61,122,82,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent3);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Advantages</div>
+                <div style="color:var(--ink2);line-height:1.6;">Low carbon emissions · Reliable baseload · Energy independence · High output · Land efficient</div>
+              </div>
+              <div style="background:rgba(196,98,45,0.06);border:1px solid rgba(196,98,45,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Disadvantages</div>
+                <div style="color:var(--ink2);line-height:1.6;">Radioactive waste · Accident risk · High construction cost · Proliferation risk · Decommissioning</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ TASK 2 — TWO-PART QUESTION ═══════ -->
+    <section class="section" id="section-t2-twopart">
+      <div class="hero-band">
+        <div class="hero-tag" style="background:var(--accent3);">Essay Type 5</div>
+        <h1>Two-part Question</h1>
+        <p>Answer both questions fully and with equal depth. Missing either part is the most common way to lose Task Response marks.</p>
+      </div>
+
+      <div class="tab-row">
+        <button class="tab-btn active" onclick="showSubTab('t2-twopart','vocab')">Vocabulary</button>
+        <button class="tab-btn" onclick="showSubTab('t2-twopart','structure')">Structure</button>
+        <button class="tab-btn" onclick="showSubTab('t2-twopart','sample')">Band 8 Answer</button>
+        <button class="tab-btn" onclick="showSubTab('t2-twopart','practice')">Practice</button>
+      </div>
+
+      <!-- VOCAB -->
+      <div class="sub-tab-content active" id="t2-twopart-vocab">
+        <div class="card">
+          <div class="card-title">Introducing each question's answer <span class="card-title-badge" style="background:rgba(196,98,45,0.1);color:var(--accent);">Structure</span></div>
+          <div class="vocab-grid">
+            <span class="chip accent" data-meaning="regarding the first point" data-ex="With regard to why this problem has arisen, several structural factors are responsible.">With regard to</span>
+            <span class="chip accent" data-meaning="turning to the second question" data-ex="Turning to the question of what can be done, a number of practical measures are available.">Turning to</span>
+            <span class="chip accent" data-meaning="as for X" data-ex="As for potential solutions, governments bear the primary responsibility for action.">As for</span>
+            <span class="chip accent" data-meaning="in terms of X" data-ex="In terms of individual responsibility, dietary choices represent the most impactful lever.">In terms of</span>
+            <span class="chip" data-meaning="the reasons for this are manifold" data-ex="The reasons for this trend are manifold, but two stand out as particularly significant.">The reasons are manifold</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Explaining reasons <span class="card-title-badge" style="background:rgba(45,107,140,0.1);color:var(--accent2);">Causation</span></div>
+          <div class="vocab-grid">
+            <span class="chip blue" data-meaning="the root cause is" data-ex="The underlying reason for this is the short-term nature of electoral cycles.">The underlying reason is</span>
+            <span class="chip blue" data-meaning="this is largely because" data-ex="This is largely due to a fundamental mismatch between incentives and outcomes.">This is largely due to</span>
+            <span class="chip blue" data-meaning="one explanation is" data-ex="One explanation is that economic pressures consistently override environmental concerns.">One explanation is that</span>
+            <span class="chip blue" data-meaning="this arises from" data-ex="This difficulty arises from the absence of binding international enforcement mechanisms.">This arises from</span>
+            <span class="chip" data-meaning="a contributing factor is" data-ex="A further contributing factor is the powerful lobbying influence of fossil fuel industries.">A further contributing factor</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Recommending actions <span class="card-title-badge" style="background:rgba(61,122,82,0.1);color:var(--accent3);">Action</span></div>
+          <div class="vocab-grid">
+            <span class="chip green" data-meaning="individuals should" data-ex="Individuals can make a significant contribution by reducing their consumption of meat and dairy products.">Individuals can contribute by</span>
+            <span class="chip green" data-meaning="at the policy level" data-ex="At the policy level, carbon pricing mechanisms have proven highly effective.">At the policy level</span>
+            <span class="chip green" data-meaning="the most impactful step would be" data-ex="Perhaps the most impactful step would be to redirect fossil fuel subsidies towards renewable energy.">The most impactful step</span>
+            <span class="chip green" data-meaning="in addition to this" data-ex="Beyond individual action, systemic reform is indispensable.">Beyond individual action</span>
+            <span class="chip" data-meaning="this requires coordination between" data-ex="Effective action requires coordination between governments, industries, and civil society.">Requires coordination between</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- STRUCTURE -->
+      <div class="sub-tab-content" id="t2-twopart-structure">
+        <div class="card">
+          <div class="card-title">Question signals</div>
+          <div style="background:var(--bg);border-radius:var(--r-sm);padding:14px 18px;border:1px solid var(--border);">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px;">Two separate, direct questions</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              <span style="font-family:'DM Mono',monospace;font-size:12px;padding:4px 10px;background:rgba(61,122,82,0.1);border-radius:20px;color:var(--accent3);">Why do you think this is the case?</span>
+              <span style="font-family:'DM Mono',monospace;font-size:12px;padding:4px 10px;background:rgba(61,122,82,0.1);border-radius:20px;color:var(--accent3);">What do you think should be done?</span>
+              <span style="font-family:'DM Mono',monospace;font-size:12px;padding:4px 10px;background:rgba(61,122,82,0.1);border-radius:20px;color:var(--accent3);">What are the effects of this and what can be done?</span>
+            </div>
+            <div style="margin-top:10px;font-size:13px;color:var(--ink2);">Both questions must be answered with equal depth. A very long answer to Q1 and a short answer to Q2 scores poorly on Task Response.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">4-paragraph structure</div>
+          <div class="essay-struct">
+            <div class="es-para">
+              <div class="es-bar" style="background:var(--accent2);"></div>
+              <div class="es-body">
+                <div class="es-label" style="color:var(--accent2);">Paragraph 1 · Introduction</div>
+                <div class="es-title">Paraphrase topic + signal both questions will be addressed</div>
+                <span class="es-time">~5 min · 40–50 words</span>
+                <div class="es-desc">Paraphrase the opening statement. Signal that the essay will address both questions. You may indicate your overall position if one is requested.</div>
+              </div>
+            </div>
+            <div class="es-para">
+              <div class="es-bar" style="background:var(--accent);"></div>
+              <div class="es-body">
+                <div class="es-label" style="color:var(--accent);">Paragraph 2 · Body 1 — Answer Question 1</div>
+                <div class="es-title">Fully address the first question</div>
+                <span class="es-time">~10 min · 85–100 words</span>
+                <div class="es-desc">Answer the first question completely. Give 2 reasons or explanations. Support with examples. Don't stray into answering Q2 here.</div>
+                <div class="es-tips"><span class="es-tip">Start with "With regard to..."</span><span class="es-tip">2 clear reasons</span></div>
+              </div>
+            </div>
+            <div class="es-para">
+              <div class="es-bar" style="background:var(--accent3);"></div>
+              <div class="es-body">
+                <div class="es-label" style="color:var(--accent3);">Paragraph 3 · Body 2 — Answer Question 2</div>
+                <div class="es-title">Fully address the second question</div>
+                <span class="es-time">~10 min · 85–100 words</span>
+                <div class="es-desc">Answer the second question completely. Give 2 suggestions or explanations. Support with examples or evidence. Mirror the depth of Body 1.</div>
+                <div class="es-tips"><span class="es-tip">Start with "Turning to..."</span><span class="es-tip">Equal length to Body 1</span></div>
+              </div>
+            </div>
+            <div class="es-para">
+              <div class="es-bar" style="background:var(--gold);"></div>
+              <div class="es-body">
+                <div class="es-label" style="color:var(--gold);">Paragraph 4 · Conclusion</div>
+                <div class="es-title">Brief summary of both answers</div>
+                <span class="es-time">~5 min · 35–45 words</span>
+                <div class="es-desc">Summarise your answer to each question in one sentence each. No new information. Maintain a forward-looking or solution-oriented tone.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SAMPLE -->
+      <div class="sub-tab-content" id="t2-twopart-sample">
+        <div class="band-meter">
+          <div class="band-score">8.0</div>
+          <div class="band-bar-wrap">
+            <div class="band-bar-track"><div class="band-bar-fill" style="width:88%;"></div></div>
+            <div class="band-bar-labels"><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div>
+          </div>
+        </div>
+        <div style="background:var(--bg);border-radius:var(--r-sm);padding:12px 18px;margin-bottom:16px;border:1px solid var(--border);font-size:13px;color:var(--ink2);font-style:italic;line-height:1.6;">
+          <strong style="font-style:normal;color:var(--ink);">Task:</strong> Climate change poses a serious and growing threat to the planet. Why do you think it has proved so difficult for governments to address this problem effectively? What measures can individuals take to help combat climate change?
+        </div>
+        <div class="sample-answer">
+          <div class="sample-header">
+            <div class="sample-header-left">Band 8 Model Answer</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.4);">274 words</div>
+          </div>
+          <div class="sample-body">
+            <div class="para-block">
+              <span class="para-label label-intro">Introduction</span>
+              <div class="para-text">Despite decades of scientific consensus, climate change remains an insufficiently addressed global emergency. This essay will examine why coordinated government action has proven so elusive before considering the practical steps that individuals can take to contribute meaningfully to a solution.</div>
+            </div>
+            <div class="para-block">
+              <span class="para-label label-body1">Q1 — Why difficult for governments</span>
+              <div class="para-text">With regard to governmental inaction, several structural obstacles prove decisive. Most fundamentally, <mark style="background:rgba(196,98,45,0.2);">the problem is inherently global while political authority remains national</mark>; no single government can solve a challenge requiring universal cooperation, and short-term economic imperatives routinely override long-term environmental responsibility. Domestically, policies such as carbon taxes or restrictions on fossil fuel industries, though environmentally essential, can be deeply unpopular with voters whose livelihoods depend on traditional energy sectors. The severe consequences of climate change are also projected to fall primarily on future generations, creating a temporal disconnect that discourages decisive action among politicians focused on immediate electoral cycles.</div>
+            </div>
+            <div class="para-block">
+              <span class="para-label label-body2">Q2 — Individual measures</span>
+              <div class="para-text">Turning to individual responsibility, citizens are far from powerless. <mark style="background:rgba(61,122,82,0.2);">Adopting plant-based or reduced-meat diets represents one of the most impactful personal choices available</mark>, given that livestock farming accounts for approximately 14.5% of global greenhouse gas emissions according to the FAO. Choosing low-carbon transport, investing in home insulation, and selecting products with smaller carbon footprints can collectively produce meaningful reductions at scale. Perhaps most significantly, citizens who engage politically—voting for candidates who prioritise climate legislation and participating in advocacy—can exert the kind of structural pressure that ultimately compels the institutional action governments have so far resisted.</div>
+            </div>
+            <div class="para-block">
+              <span class="para-label" style="background:#F0EBE0;color:#5C4B2A;">Conclusion</span>
+              <div class="para-text">In summary, the complexity of international coordination and domestic political pressures have severely hampered governmental climate action. Nonetheless, through informed lifestyle choices and active civic engagement, individuals can help accelerate the systemic transition that the scale of this crisis demands.</div>
+            </div>
+            <div class="wc-row"><div class="wc-chip"><strong>274</strong> words</div><div class="wc-chip">Both questions <strong>fully answered</strong></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRACTICE -->
+      <div class="sub-tab-content" id="t2-twopart-practice">
+        <div class="practice-q">
+          <div class="pq-header"><div class="pq-num">01</div><div><div class="pq-title">Mental Health Crisis</div><div class="pq-type">Two-part · 40 min · 250+ words</div></div></div>
+          <div class="pq-prompt">Rates of anxiety and depression among young people have risen significantly in many countries over the past decade. Why do you think this is happening? What can governments and schools do to address this issue?</div>
+          <div class="pq-visual" style="background:var(--surface);">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12.5px;">
+              <div style="background:rgba(196,98,45,0.06);border:1px solid rgba(196,98,45,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Why it's happening (Q1)</div>
+                <div style="color:var(--ink2);line-height:1.6;">Social media pressure · Academic competition · Economic insecurity · Reduced community ties · Pandemic effects</div>
+              </div>
+              <div style="background:rgba(61,122,82,0.06);border:1px solid rgba(61,122,82,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent3);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">What can be done (Q2)</div>
+                <div style="color:var(--ink2);line-height:1.6;">School counsellors · Mental health curriculum · NHS funding · Social media regulation · Community programmes</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="practice-q">
+          <div class="pq-header"><div class="pq-num">02</div><div><div class="pq-title">Loss of Biodiversity</div><div class="pq-type">Two-part · 40 min · 250+ words</div></div></div>
+          <div class="pq-prompt">Many plant and animal species are becoming extinct at an alarming rate. What are the main reasons for this loss of biodiversity? What do you think can be done to slow or reverse this trend?</div>
+          <div class="pq-visual" style="background:var(--surface);">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12.5px;">
+              <div style="background:rgba(196,98,45,0.06);border:1px solid rgba(196,98,45,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Causes (Q1)</div>
+                <div style="color:var(--ink2);line-height:1.6;">Deforestation · Habitat loss · Pollution · Climate change · Invasive species · Overexploitation</div>
+              </div>
+              <div style="background:rgba(61,122,82,0.06);border:1px solid rgba(61,122,82,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent3);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Solutions (Q2)</div>
+                <div style="color:var(--ink2);line-height:1.6;">Protected areas · Reforestation · International agreements · Consumer choices · Rewilding</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="practice-q">
+          <div class="pq-header"><div class="pq-num">03</div><div><div class="pq-title">Arts Funding</div><div class="pq-type">Two-part · 40 min · 250+ words</div></div></div>
+          <div class="pq-prompt">Some people argue that governments spend too much money funding the arts when this money could be better spent on public services such as healthcare and education. Why do some people hold this view? Do you think government funding for the arts is justified?</div>
+          <div class="pq-visual" style="background:var(--surface);">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12.5px;">
+              <div style="background:rgba(196,98,45,0.06);border:1px solid rgba(196,98,45,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Why critics oppose (Q1)</div>
+                <div style="color:var(--ink2);line-height:1.6;">Public services underfunded · Arts seen as elitist · Private sector alternative · Economic priorities</div>
+              </div>
+              <div style="background:rgba(61,122,82,0.06);border:1px solid rgba(61,122,82,0.15);border-radius:var(--r-sm);padding:10px 12px;">
+                <div style="font-weight:600;color:var(--accent3);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Why arts funding justified (Q2)</div>
+                <div style="color:var(--ink2);line-height:1.6;">Cultural heritage · Tourism revenue · Mental health benefits · National identity · Market failure in arts</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </div>
 </div>
 
@@ -3006,6 +4261,21 @@ function initPracCharts(section) {
   }
 }
 
+function goT2(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+  document.getElementById('section-' + id).classList.add('active');
+  const titles = { 't2-overview':'Task 2 — Overview', 't2-opinion':'Opinion Essay', 't2-discussion':'Discussion Essay', 't2-problem':'Problem & Solution', 't2-advantages':'Advantages & Disadvantages', 't2-twopart':'Two-part Question' };
+  document.getElementById('topbar-title').textContent = titles[id] || id;
+  const navBtn = document.querySelector('.nav-item[onclick="showSection(\'' + id + '\')"]');
+  if (navBtn) navBtn.classList.add('active');
+  const taskBody = document.getElementById('taskgroup-t2').querySelector('.task-body');
+  if (taskBody && !taskBody.classList.contains('open')) {
+    taskBody.classList.add('open');
+    document.getElementById('taskgroup-t2').classList.add('open');
+  }
+}
+
 function togglePart(partId) {
   const body   = document.getElementById('part-body-' + partId);
   const header = document.querySelector('#part-' + partId + ' .part-header');
@@ -3037,8 +4307,12 @@ function showSection(id) {
   document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
   document.getElementById('section-' + id).classList.add('active');
   event.currentTarget.classList.add('active');
-  const titles = { overview:'Overview', line:'Line Graph', bar:'Bar Chart', pie:'Pie Chart', table:'Table', map:'Map', process:'Process Diagram' };
-  document.getElementById('topbar-title').textContent = titles[id];
+  const titles = {
+    overview:'Overview', line:'Line Graph', bar:'Bar Chart', pie:'Pie Chart', table:'Table', map:'Map', process:'Process Diagram',
+    't2-overview':'Task 2 — Overview', 't2-opinion':'Opinion Essay', 't2-discussion':'Discussion Essay',
+    't2-problem':'Problem & Solution', 't2-advantages':'Advantages & Disadvantages', 't2-twopart':'Two-part Question'
+  };
+  document.getElementById('topbar-title').textContent = titles[id] || id;
   setTimeout(() => {
     if (id === 'line') { initLineChart(); initStratCharts(); }
     if (id === 'bar')  { initBarChart();  initStratCharts(); }
